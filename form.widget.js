@@ -15,13 +15,20 @@ const showError = (input, msg) => {
     input.classList.add("error");
     if (formControl) {
         formControl.classList.add("error");
-        const smallParent = formControl.parentElement
-        console.log('smallParent', smallParent)
+
         const small = formControl.parentElement.querySelector(".extra");
         console.log('small', small)
         if (small) {
             small.style.display = "block";
             small.textContent = msg;
+        } else {
+            const smallParent = formControl.parentElement
+            console.log('smallParent', smallParent)
+            const smallPhone = smallParent.parentElement.querySelector(".extra");
+            if (smallPhone) {
+                smallPhone.style.display = "block";
+                smallPhone.textContent = msg;
+            }
         }
         const checkbox = formControl.querySelector(".w-checkbox-input");
         if (checkbox) {
