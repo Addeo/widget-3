@@ -164,9 +164,10 @@ function sendData() {
             errorMes.style.display = "flex";
         }
     };
-
+    console.log(formDataObj)
+    console.log(JSON.stringify(formDataObj))
     XHR.open("POST", "https://api.leads.convolo.ai/api/v2/auth/register");
-    // XHR.setRequestHeader("Content-type", "application/json");
+    XHR.setRequestHeader("Content-type", "application/json");
     XHR.setRequestHeader("Access-Control-Allow-Origin", "*");
     XHR.send(JSON.stringify(formDataObj));
 }
