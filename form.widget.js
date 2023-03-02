@@ -169,5 +169,5 @@ function sendData() {
     XHR.open("POST", "https://api.leads.convolo.ai/api/v2/auth/register");
     XHR.setRequestHeader("Content-type", "application/json");
     XHR.setRequestHeader("Access-Control-Allow-Origin", "*");
-    XHR.send(JSON.stringify(formDataObj));
+    XHR.send({});
 }
