@@ -147,14 +147,7 @@ function sendData() {
     const promo = FD.get("promo_code");
     if (!promo) FD.set("promo_code", ' ')
     FD.delete("terms")
-    // if (agree.checked) {
-    //     FD.delete("terms")
-    // } else {
-    //     FD.set("terms", false)
-    // }
     FD.forEach((value, key) => (formDataObj[key] = value));
-    // const sendObject = JSON.stringify(formDataObj)
-
     const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
     console.log('sendObject', sendObject)
 
@@ -171,5 +164,5 @@ function sendData() {
     XHR.open("POST", "https://api.leads.convolo.ai/api/v2/auth/register");
     XHR.setRequestHeader("Content-type", "application/json");
     XHR.setRequestHeader("Access-Control-Allow-Origin", "*");
-    XHR.send(JSON.stringify(sendObject));
+    XHR.send(sendObject);
 }
