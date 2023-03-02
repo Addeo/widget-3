@@ -25,6 +25,7 @@ const showError = (input, msg) => {
             const smallParent = formControl.parentElement
             console.log('smallParent', smallParent)
             const smallPhone = smallParent.parentElement.querySelector(".extra");
+            console.log('smallPhone', smallPhone)
             if (smallPhone) {
                 smallPhone.style.display = "block";
                 smallPhone.textContent = msg;
