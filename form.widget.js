@@ -155,7 +155,7 @@ function sendData() {
     FD.forEach((value, key) => (formDataObj[key] = value));
     // const sendObject = JSON.stringify(formDataObj)
 
-    const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, terms: ${agree.checked} }`
+    const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
     console.log('sendObject', sendObject)
 
     XHR.onreadystatechange = function() {
