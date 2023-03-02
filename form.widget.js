@@ -17,18 +17,15 @@ const showError = (input, msg) => {
         formControl.classList.add("error");
 
         const small = formControl.parentElement.querySelector(".extra");
-        console.log('small', small)
         if (small) {
             small.style.display = "block";
             small.textContent = msg;
         } else {
-            const smallParent = formControl.parentElement
-            console.log('smallParent', smallParent)
+            const smallParent = formControl.parentElement;
             const smallPhone = smallParent.parentElement.querySelector(".extra");
-            console.log('smallPhone', smallPhone)
             if (smallPhone) {
                 smallPhone.style.display = "block";
-                smallPhone.textContent = msg;
+                smallPhone.textContent = 'Phone not valid';
             }
         }
         const checkbox = formControl.querySelector(".w-checkbox-input");
@@ -46,6 +43,12 @@ function showSucces(input) {
         const small = formControl.parentElement.querySelector(".extra");
         if (small) {
             small.style.display = "none";
+        } else {
+            const smallParent = formControl.parentElement;
+            const smallPhone = smallParent.parentElement.querySelector(".extra");
+            if (smallPhone) {
+                small.style.display = "none";
+            }
         }
     }
 }
@@ -118,11 +121,9 @@ const checkAgree = (input) => {
 }
 
 const checkPhone = (input) => {
-    console.log('window.isValidNumber', window.isValidNumber)
     if (window.isValidNumber) {
         showSucces(input);
     } else {
-        console.log('window.isValidNumber', window.isValidNumber)
         showError(input, `${getFieldName(input)} is not valid`)
     }
     return window.isValidNumber
