@@ -47,7 +47,7 @@ function showSucces(input) {
             const smallParent = formControl.parentElement;
             const smallPhone = smallParent.parentElement.querySelector(".extra");
             if (smallPhone) {
-                small.style.display = "none";
+                smallPhone.style.display = "none";
             }
         }
     }
