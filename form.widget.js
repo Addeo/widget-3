@@ -144,8 +144,6 @@ function sendData() {
     const XHR = new XMLHttpRequest();
     const FD = new FormData(form);
     const formDataObj = {};
-    FD.forEach((value, key) => (formDataObj[key] = value));
-    console.log(formDataObj);
     const promo = FD.get("promo_code");
     if (!promo) FD.set("promo_code", ' ')
     if (agree.checked) {
@@ -153,6 +151,7 @@ function sendData() {
     } else {
         FD.set("terms", false)
     }
+    FD.forEach((value, key) => (formDataObj[key] = value));
 
     XHR.onreadystatechange = function() {
         if (XHR.readyState === 1 || XHR.readyState === 2 || XHR.readyState === 3) {}
@@ -164,7 +163,6 @@ function sendData() {
             errorMes.style.display = "flex";
         }
     };
-    console.log(formDataObj)
     console.log(JSON.stringify(formDataObj))
     XHR.open("POST", "https://api.leads.convolo.ai/api/v2/auth/register");
     XHR.setRequestHeader("Content-type", "application/json");
