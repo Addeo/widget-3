@@ -163,16 +163,16 @@ function sendData() {
     FD.forEach((value, key) => (formDataObj[key] = value));
     const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
 
-    XHR.onreadystatechange = function() {
-        if (XHR.readyState === 1 || XHR.readyState === 2 || XHR.readyState === 3) {}
-        if (XHR.readyState === 4 && XHR.status === 200 && XHR.status === 201 && XHR.status === 202 && XHR.status === 204) {
-            window.location.href = 'https://convolo.ai/success'
-        } else if (XHR.readyState === 4 && XHR.status === 404) {
-            errorMes.style.display = "flex";
-        } else if (XHR.readyState === 4 && XHR.status !== 200 || XHR.readyState === 4 && XHR.status !== 404) {
-            errorMes.style.display = "flex";
+    XHR.onload = () => {
+        if (XHR.readyState === 4) {
+            if (XHR.status === 200 || XHR.status === 201) {
+                window.location.href = 'https://convolo.ai/success'
+            } else {
+                errorMes.style.display = "flex";
+            }
         }
     };
+
     XHR.open("POST", "https://api.leads.convolo.ai/api/v2/auth/register");
     XHR.setRequestHeader("Content-type", "application/json");
     XHR.setRequestHeader("Access-Control-Allow-Origin", "*");
