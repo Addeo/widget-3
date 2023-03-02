@@ -146,12 +146,17 @@ function sendData() {
     const formDataObj = {};
     const promo = FD.get("promo_code");
     if (!promo) FD.set("promo_code", ' ')
-    if (agree.checked) {
-        FD.set("terms", true)
-    } else {
-        FD.set("terms", false)
-    }
+    FD.delete("terms")
+    // if (agree.checked) {
+    //     FD.delete("terms")
+    // } else {
+    //     FD.set("terms", false)
+    // }
     FD.forEach((value, key) => (formDataObj[key] = value));
+    // const sendObject = JSON.stringify(formDataObj)
+
+    const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, terms: ${agree.checked} }`
+    console.log('sendObject', sendObject)
 
     XHR.onreadystatechange = function() {
         if (XHR.readyState === 1 || XHR.readyState === 2 || XHR.readyState === 3) {}
@@ -163,9 +168,8 @@ function sendData() {
             errorMes.style.display = "flex";
         }
     };
-    console.log(JSON.stringify(formDataObj))
     XHR.open("POST", "https://api.leads.convolo.ai/api/v2/auth/register");
     XHR.setRequestHeader("Content-type", "application/json");
     XHR.setRequestHeader("Access-Control-Allow-Origin", "*");
-    XHR.send(JSON.stringify(formDataObj));
+    XHR.send(JSON.stringify(sendObject));
 }
