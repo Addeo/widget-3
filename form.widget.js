@@ -16,7 +16,9 @@ const showError = (input, msg) => {
     if (formControl) {
         formControl.classList.add("error");
         const smallParent = formControl.parentElement
+        console.log('smallParent', smallParent)
         const small = formControl.parentElement.querySelector(".extra");
+        console.log('small', small)
         if (small) {
             small.style.display = "block";
             small.textContent = msg;
@@ -108,9 +110,11 @@ const checkAgree = (input) => {
 }
 
 const checkPhone = (input) => {
+    console.log('window.isValidNumber', window.isValidNumber)
     if (window.isValidNumber) {
         showSucces(input);
     } else {
+        console.log('window.isValidNumber', window.isValidNumber)
         showError(input, `${getFieldName(input)} is not valid`)
     }
     return window.isValidNumber
@@ -149,7 +153,6 @@ function sendData() {
     FD.delete("terms")
     FD.forEach((value, key) => (formDataObj[key] = value));
     const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
-    console.log('sendObject', sendObject)
 
     XHR.onreadystatechange = function() {
         if (XHR.readyState === 1 || XHR.readyState === 2 || XHR.readyState === 3) {}
