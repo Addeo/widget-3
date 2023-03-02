@@ -142,7 +142,10 @@ form.addEventListener("submit", function(e) {
 function sendData() {
     errorMes.style.display = "none";
     const XHR = new XMLHttpRequest();
-    const FD = new FormData(form); // assoccio l'oggetto FormData all'elemento form
+    const FD = new FormData(form);
+    const formDataObj = {};
+    FD.forEach((value, key) => (formDataObj[key] = value));
+    console.log(formDataObj);
     const promo = FD.get("promo_code");
     if (!promo) FD.set("promo_code", ' ')
     if (agree.checked) {
@@ -163,5 +166,5 @@ function sendData() {
     };
 
     XHR.open("POST", "https://api.leads.convolo.ai/api/v2/auth/register");
-    XHR.send(FD);
+    XHR.send(formDataObj);
 }
