@@ -166,5 +166,6 @@ function sendData() {
     };
 
     XHR.open("POST", "https://api.leads.convolo.ai/api/v2/auth/register");
+    xhr.setRequestHeader("Content-type", "application/json");
     XHR.send(formDataObj);
 }
