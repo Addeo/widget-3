@@ -158,7 +158,7 @@ function sendData() {
     const FD = new FormData(form);
     const formDataObj = {};
     const promo = FD.get("promo_code");
-    if (!promo) FD.set("promo_code", ' ')
+    if (!promo) FD.set("promo_code", '')
     FD.delete("terms")
     FD.forEach((value, key) => (formDataObj[key] = value));
     const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
