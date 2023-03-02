@@ -145,7 +145,7 @@ const validateForm = () => {
 form.addEventListener("submit", function(e) {
     e.preventDefault();
     if (validateForm()) {
-        // sendData()
+        sendData()
     } else {
         console.log('error')
     }
@@ -165,7 +165,7 @@ function sendData() {
 
     XHR.onreadystatechange = function() {
         if (XHR.readyState === 1 || XHR.readyState === 2 || XHR.readyState === 3) {}
-        if (XHR.readyState === 4 && XHR.status === 200) {
+        if (XHR.readyState === 4 && XHR.status === 200 && XHR.status === 201 && XHR.status === 202 && XHR.status === 204) {
             window.location.href = 'https://convolo.ai/success'
         } else if (XHR.readyState === 4 && XHR.status === 404) {
             errorMes.style.display = "flex";
