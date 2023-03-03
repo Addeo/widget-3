@@ -172,9 +172,9 @@ function sendData() {
             } else {
                 errorMes.style.display = "flex";
                 if (XHR.response) {
-                    console.log(XHR.response)
+                    const responseJson = JSON.parse(XHR.response)
                     if (errorTextMes) {
-                        errorTextMes.textContent = XHR.response.message
+                        errorTextMes.textContent = responseJson.message
                     } else {
                         console.log('no errorTextMes')
                     }
