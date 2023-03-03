@@ -8,6 +8,7 @@ const phone = document.querySelector("#phone_number-2");
 const promoCode = document.querySelector("#promo_code-2");
 const agree = document.querySelector("#terms");
 const errorMes = document.querySelector(".error-mes");
+const errorTextMes = document.querySelector("#text-error-message");
 
 const showError = (input, msg) => {
     const formControl = input.parentElement;
@@ -170,6 +171,11 @@ function sendData() {
                 window.location.href = 'https://convolo.ai/success'
             } else {
                 errorMes.style.display = "flex";
+                if (XHR.response ) {
+                    if (errorTextMes) {
+                        errorTextMes.textContent = XHR.response.message
+                    }
+                }
             }
         }
     };
