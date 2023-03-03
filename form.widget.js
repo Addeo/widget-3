@@ -171,10 +171,15 @@ function sendData() {
                 window.location.href = 'https://convolo.ai/success'
             } else {
                 errorMes.style.display = "flex";
-                if (XHR.response ) {
+                if (XHR.response) {
+                    console.log(XHR.response)
                     if (errorTextMes) {
                         errorTextMes.textContent = XHR.response.message
+                    } else {
+                        console.log('no errorTextMes')
                     }
+                } else {
+                    console.log('no XHR.response')
                 }
             }
         }
