@@ -144,6 +144,7 @@ const validateForm = () => {
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();
+    e.stopPropagation();
     if (validateForm()) {
         sendData()
     } else {
