@@ -10,6 +10,16 @@ const agree = document.querySelector("#terms");
 const errorMes = document.querySelector(".error-mes");
 const errorTextMes = document.querySelector("#text-error-message");
 
+if (agree) {
+    agree.addEventListener('click', () => {
+        if (agree.checked) {
+            showSuccess(agree);
+        } else {
+            showError(agree, `need agree`)
+        }
+    })
+}
+
 const showError = (input, msg) => {
     const formControl = input.parentElement;
     formControl.classList.add("error");
@@ -36,7 +46,7 @@ const showError = (input, msg) => {
     }
 };
 
-function showSucces(input) {
+function showSuccess(input) {
     const formControl = input.parentElement;
     if (formControl) {
         input.classList.remove('error');
@@ -58,7 +68,7 @@ function showSucces(input) {
 function checkEmail(input) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (re.test(input.value.trim())) {
-        showSucces(input)
+        showSuccess(input)
         return true
     } else {
         showError(input, 'Email is not invalid');
@@ -75,7 +85,7 @@ function checkRequired(inputArr) {
             showError(input, `${getFieldName(input)} is required`)
             check = false
         } else {
-            showSucces(input);
+            showSuccess(input);
         }
     });
     return check
@@ -86,7 +96,7 @@ const checkPasswordMatch = (input1, input2) => {
         showError(input1, "Passwords must match");
         return false
     } else {
-        showSucces(input1);
+        showSuccess(input1);
         return true
     }
 };
@@ -114,7 +124,7 @@ const checkLength = (input, min, max) => {
 
 const checkAgree = (input) => {
     if (input.checked) {
-        showSucces(input);
+        showSuccess(input);
     } else {
         showError(input, `need agree`)
     }
@@ -123,7 +133,7 @@ const checkAgree = (input) => {
 
 const checkPhone = (input) => {
     if (window.isValidNumber) {
-        showSucces(input);
+        showSuccess(input);
     } else {
         showError(input, `${getFieldName(input)} is not valid`)
     }
