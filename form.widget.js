@@ -14,6 +14,9 @@ if (agree) {
     agree.addEventListener('click', () => {
         if (agree.checked) {
             showSuccess(agree);
+            if (errorMes) {
+                errorMes.style.display = "none";
+            }
         } else {
             showError(agree, `Please agree to the Convolo Terms of Service`)
         }
