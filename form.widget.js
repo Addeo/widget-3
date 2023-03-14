@@ -15,7 +15,7 @@ if (agree) {
         if (agree.checked) {
             showSuccess(agree);
         } else {
-            showError(agree, `need agree`)
+            showError(agree, `Please agree to the Convolo Terms of Service`)
         }
     })
 }
@@ -126,7 +126,7 @@ const checkAgree = (input) => {
     if (input.checked) {
         showSuccess(input);
     } else {
-        showError(input, `need agree`)
+        showError(input, `Please agree to the Convolo Terms of Service`)
     }
     return input.checked
 }
