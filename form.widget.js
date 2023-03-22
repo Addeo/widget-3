@@ -174,6 +174,12 @@ function sendData() {
     const formDataObj = {};
     const promo = FD.get("promo_code");
     if (!promo) FD.set("promo_code", '')
+    if (window.selectedCountryCode) {
+        console.log('window.selectedCountryCode', window.selectedCountryCode)
+        formDataObj.countryCode = window.selectedCountryCode;
+    } else {
+        console.log('no window.selectedCountryCode', window.selectedCountryCode)
+    }
     FD.delete("terms")
     FD.forEach((value, key) => (formDataObj[key] = value));
     const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
