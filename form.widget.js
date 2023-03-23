@@ -176,7 +176,7 @@ function sendData() {
     if (!promo) FD.set("promo_code", '')
     if (window.selectedCountryCode) {
         console.log('window.selectedCountryCode', window.selectedCountryCode)
-        formDataObj.countryCode = window.selectedCountryCode;
+        formDataObj['country_code'] = window.selectedCountryCode;
     } else {
         console.log('no window.selectedCountryCode', window.selectedCountryCode)
     }
