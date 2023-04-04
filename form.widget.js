@@ -1,5 +1,3 @@
-console.log('hi')
-
 const form = document.querySelector("#signup-form");
 const email = document.querySelector("#email-2");
 const password = document.querySelector("#password");
@@ -179,6 +177,12 @@ function sendData() {
         formDataObj['country_code'] = window.selectedCountryCode;
     } else {
         console.log('no window.selectedCountryCode', window.selectedCountryCode)
+    }
+    if (window.internationalNumber) {
+        console.log('window.internationalNumber', window.internationalNumber)
+        formDataObj['international_number'] = window.internationalNumber;
+    } else {
+        console.log('no window.internationalNumber', window.internationalNumber)
     }
     FD.delete("terms")
     FD.forEach((value, key) => (formDataObj[key] = value));
