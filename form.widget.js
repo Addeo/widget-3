@@ -178,14 +178,15 @@ function sendData() {
     } else {
         console.log('no window.selectedCountryCode', window.selectedCountryCode)
     }
+
+    FD.delete("terms")
+    FD.forEach((value, key) => (formDataObj[key] = value));
     if (window.internationalNumber) {
         console.log('window.internationalNumber', window.internationalNumber)
-        formDataObj['international_number'] = window.internationalNumber;
+        formDataObj['phone_number'] = window.internationalNumber;
     } else {
         console.log('no window.internationalNumber', window.internationalNumber)
     }
-    FD.delete("terms")
-    FD.forEach((value, key) => (formDataObj[key] = value));
     const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
 
     XHR.onload = () => {
