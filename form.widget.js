@@ -1,6 +1,6 @@
 const form = document.querySelector("#signup-form");
 const email = document.querySelector("#email-2");
-const affiliate = document.querySelector("#Affiliate");
+const affiliate = document.querySelector("#Affiliate-2");
 const password = document.querySelector("#password");
 const passwordConfirmation = document.querySelector("#confirm_password");
 const phone = document.querySelector("#phone_number-2");
