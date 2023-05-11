@@ -1,5 +1,6 @@
 const form = document.querySelector("#signup-form");
 const email = document.querySelector("#email-2");
+const affiliate = document.querySelector("#Affiliate");
 const password = document.querySelector("#password");
 const passwordConfirmation = document.querySelector("#confirm_password");
 const phone = document.querySelector("#phone_number-2");
@@ -177,6 +178,13 @@ function sendData() {
         formDataObj['country_code'] = window.selectedCountryCode;
     } else {
         console.log('no window.selectedCountryCode', window.selectedCountryCode)
+    }
+
+    const paramPartner = window.localStorage.getItem('paramPartner');
+    if (paramPartner) {
+        formDataObj['Affiliate'] = paramPartner;
+    } else {
+        console.log('no paramPartner')
     }
 
     FD.delete("terms")
