@@ -200,7 +200,16 @@ function sendData() {
     XHR.onload = () => {
         if (XHR.readyState === 4) {
             if (XHR.status === 200 || XHR.status === 201) {
-                window.location.href = 'https://convolo.ai/success'
+                window.location.href = 'https://convolo.ai/success';
+                if ($FPROM) {
+                    $FPROM.trackSignup(
+                        { email: formDataObj.email},
+                        function(){console.log('Callback received!')}
+                        );
+                } else {
+                    console.log('no $FPROM')
+                }
+             
             } else {
                 errorMes.style.display = "flex";
                 if (XHR.response) {
