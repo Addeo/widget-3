@@ -15,11 +15,12 @@
 
 }
 
+
 @keyframes fadeIn {
     99% {
-      visibility: hidden;
+      width: 0px;
     }
     100% {
-      visibility: visible;
+    width: 100px;
     }
-}
+  }
