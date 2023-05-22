@@ -1,3 +1,7 @@
+.horizontal-container{
+  position: relative
+}
+
 .horizontal-scroll-help{
     animation: 1s fadeIn;
     animation-fill-mode: forwards;
