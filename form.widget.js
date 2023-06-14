@@ -1,5 +1,6 @@
 const form = document.querySelector("#signup-form");
 const email = document.querySelector("#email-2");
+const affiliate = document.querySelector("#Affiliate-2");
 const password = document.querySelector("#password");
 const passwordConfirmation = document.querySelector("#confirm_password");
 const phone = document.querySelector("#phone_number-2");
@@ -179,6 +180,13 @@ function sendData() {
         console.log('no window.selectedCountryCode', window.selectedCountryCode)
     }
 
+    const paramPartner = window.localStorage.getItem('paramPartner');
+    if (paramPartner) {
+        formDataObj['Affiliate'] = paramPartner;
+    } else {
+        console.log('no paramPartner')
+    }
+
     FD.delete("terms")
     FD.forEach((value, key) => (formDataObj[key] = value));
     if (window.internationalNumber) {
@@ -192,7 +200,16 @@ function sendData() {
     XHR.onload = () => {
         if (XHR.readyState === 4) {
             if (XHR.status === 200 || XHR.status === 201) {
-                window.location.href = 'https://convolo.ai/success'
+                window.location.href = 'https://convolo.ai/success';
+                if ($FPROM) {
+                    $FPROM.trackSignup(
+                        { email: formDataObj.email},
+                        function(){console.log('Callback received!')}
+                        );
+                } else {
+                    console.log('no $FPROM')
+                }
+             
             } else {
                 errorMes.style.display = "flex";
                 if (XHR.response) {

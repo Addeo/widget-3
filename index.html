@@ -54,8 +54,43 @@
         .col4 {order: 0;}
         .col5 {order: 4;}
         .col6 {order: 5;}
+        .test-block1{
+            width: 100%;
+            height: 50vh;
+            background-color: aqua;
+        }
+        .horizontal-container{
+            width: 100%;
+            height: 50vh;
+            background-color: orange;
+            position: relative
+        }
+        .slider{
+            display: flex;
+            flex-direction: row;
+            overflow: scroll;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            margin: 10px;
+            background-color: white;
+        }
+        .image{
+            min-width: 300px;
+            min-height: 300px;
+        }
+        .image.red{
+            background-color: red;
+        }
+        .image.blue{
+            background-color: blue;
+        }
+        .image.black{
+            background-color: black;
+        }
 
     </style>
+    <link href="./horizontal-scroll.css" rel="stylesheet">
 </head>
 <body>
 <div class="app">
@@ -87,7 +122,28 @@
             <div  class="col5">5</div>
             <div  class="col6">6</div>
         </div>
-        <iframe id="idiframe" src="https://player.vimeo.com/video/779700439?h=8d5bb7c731&autoplay=1&loop=1&portrait=0&autopause=0&muted=1" style="position:absolute;top:0;left:0;width:100%;height:100%;rudius=20px;" frameborder="0" allow="autoplay;" allowfullscreen></iframe>
+        <div class="test-block1">
+
+        </div>
+        <div class="horizontal-container">
+            <div class="slider horizontal-scroll-container">
+                <div class="image red"></div>
+                <div class="image blue"></div>
+                <div class="image black"></div>
+            </div>
+            <div  class="horizontal-scroll-help"></div>
+        </div>
+
+        <div class="horizontal-container">
+            <div class="slider horizontal-scroll-container">
+                <div class="image red"></div>
+                <div class="image blue"></div>
+                <div class="image black"></div>
+            </div>
+            <div  class="horizontal-scroll-help"></div>
+        </div>
+
+        <!-- <iframe id="idiframe" src="https://player.vimeo.com/video/779700439?h=8d5bb7c731&autoplay=1&loop=1&portrait=0&autopause=0&muted=1" style="position:absolute;top:0;left:0;width:100%;height:100%;rudius=20px;" frameborder="0" allow="autoplay;" allowfullscreen></iframe> -->
 </div>
     </main>
 </div>
@@ -164,5 +220,33 @@
         s.parentNode.insertBefore(em, s);
     })();
 </script>
+<!-- <script> (function f() { var widget_key = '0f378dcbd7f891dd29590b34f9d1ccb6'; window.leadCM = { widget_key: widget_key, }; var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true; em.src = 'https://app.convolo.ai/js/icallback.js?v=' + Math.random() + '&key=' + widget_key + '&uri=' + encodeURIComponent(window.location.href); var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s); })(); </script> -->
+
+<script>
+    const devices = new RegExp('Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini', "i");
+    if (devices.test(navigator.userAgent)) {
+        const horizontalScrollContainers = document.getElementsByClassName('horizontal-container')
+        if (horizontalScrollContainers.length) {
+            for(let container of horizontalScrollContainers) {
+                const scrollHelp = container.querySelector('.horizontal-scroll-help');
+                if (scroll) {
+                    setInterval(() => {
+                        scrollHelp.style.visibility = 'visible'
+                        setTimeout(() => {
+                            scrollHelp.style.visibility = 'hidden'
+                        }, 3000)
+                    }, 6000)
+                    const horizontalScrollContainer = container.querySelector('.horizontal-scroll-container');
+                    horizontalScrollContainer.addEventListener('scroll', () => {
+                        scrollHelp.style.display = 'none'
+                    })
+                }
+            }
+        }
+    } else {
+        console.log('not mobile')
+    }
+</script>
+
 </body>
 </html>
