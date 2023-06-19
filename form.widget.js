@@ -201,6 +201,10 @@ function sendData() {
         if (XHR.readyState === 4) {
             if (XHR.status === 200 || XHR.status === 201) {
                 window.location.href = 'https://convolo.ai/success';
+                // Google analytics
+                if (window.dataLayer) {
+                    window.dataLayer.push({event: "SIGNUP_FORM_SUBMIT"});
+                }
                 if ($FPROM) {
                     $FPROM.trackSignup(
                         { email: formDataObj.email},
@@ -209,7 +213,7 @@ function sendData() {
                 } else {
                     console.log('no $FPROM')
                 }
-             
+
             } else {
                 errorMes.style.display = "flex";
                 if (XHR.response) {
