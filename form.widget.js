@@ -203,6 +203,7 @@ function sendData() {
                 window.location.href = 'https://convolo.ai/success';
                 // Google analytics
                 if (window.dataLayer) {
+                    console.log('SIGNUP_FORM_SUBMIT')
                     window.dataLayer.push({event: "SIGNUP_FORM_SUBMIT"});
                 }
                 if ($FPROM) {
