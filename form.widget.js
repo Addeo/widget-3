@@ -217,6 +217,9 @@ function sendData() {
                 // Google analytics
                 if (window.dataLayer) {
                     let sendEvent = "SIGNUP_FORM_SUBMIT"
+                    console.log('countryCodeGlobal', countryCodeGlobal)
+                    console.log('euArray', euArray)
+                    console.log('euArray.includes(countryCodeGlobal)', euArray.includes(countryCodeGlobal))
                     if (countryCodeGlobal && euArray && euArray.includes(countryCodeGlobal)) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_EU"
                     }
