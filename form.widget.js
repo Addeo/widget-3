@@ -186,10 +186,10 @@ function sendData() {
     const promo = FD.get("promo_code");
     if (!promo) FD.set("promo_code", '')
     if (window.selectedCountryCode) {
-        console.log('window.selectedCountryCode', window.selectedCountryCode)
+        // console.log('window.selectedCountryCode', window.selectedCountryCode)
         formDataObj['country_code'] = window.selectedCountryCode;
     } else {
-        console.log('no window.selectedCountryCode', window.selectedCountryCode)
+        // console.log('no window.selectedCountryCode', window.selectedCountryCode)
     }
 
     const paramPartner = window.localStorage.getItem('paramPartner');
@@ -202,10 +202,10 @@ function sendData() {
     FD.delete("terms")
     FD.forEach((value, key) => (formDataObj[key] = value));
     if (window.internationalNumber) {
-        console.log('window.internationalNumber', window.internationalNumber)
+        // console.log('window.internationalNumber', window.internationalNumber)
         formDataObj['phone_number'] = window.internationalNumber;
     } else {
-        console.log('no window.internationalNumber', window.internationalNumber)
+        // console.log('no window.internationalNumber', window.internationalNumber)
     }
     const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
 
@@ -217,19 +217,19 @@ function sendData() {
                 // Google analytics
                 if (window.dataLayer) {
                     let sendEvent = "SIGNUP_FORM_SUBMIT"
-                    if (window.countryCodeGlobal && window.euArray && window.euArray.includes(window.countryCodeGlobal)) {
+                    if (countryCodeGlobal && euArray && euArray.includes(countryCodeGlobal)) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_EU"
                     }
-                    if (window.countryCodeGlobal && window.naArray && window.naArray.includes(window.countryCodeGlobal)) {
+                    if (countryCodeGlobal && naArray && naArray.includes(countryCodeGlobal)) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_NA"
                     }
-                    if (window.countryCodeGlobal && window.meArray && window.meArray.includes(window.countryCodeGlobal)) {
+                    if (countryCodeGlobal && meArray && meArray.includes(countryCodeGlobal)) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_ME"
                     }
-                    if (window.countryCodeGlobal && window.asiaArray && window.asiaArray.includes(window.countryCodeGlobal)) {
+                    if (countryCodeGlobal && asiaArray && asiaArray.includes(countryCodeGlobal)) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_ASIA"
                     }
-                    if (window.countryCodeGlobal && window.latamArray && window.latamArray.includes(window.countryCodeGlobal)) {
+                    if (countryCodeGlobal && latamArray && latamArray.includes(countryCodeGlobal)) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_LATAM"
                     }
                     console.log('sendEvent', sendEvent)
