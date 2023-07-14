@@ -212,11 +212,28 @@ function sendData() {
     XHR.onload = () => {
         if (XHR.readyState === 4) {
             if (XHR.status === 200 || XHR.status === 201) {
+
                 window.location.href = 'https://convolo.ai/success';
                 // Google analytics
                 if (window.dataLayer) {
-                    console.log('SIGNUP_FORM_SUBMIT')
-                    window.dataLayer.push({event: "SIGNUP_FORM_SUBMIT"});
+                    let sendEvent = "SIGNUP_FORM_SUBMIT"
+                    if (window.countryCodeGlobal && window.euArray && window.euArray.includes(window.countryCodeGlobal)) {
+                        sendEvent = "SIGNUP_FORM_SUBMIT_EU"
+                    }
+                    if (window.countryCodeGlobal && window.naArray && window.naArray.includes(window.countryCodeGlobal)) {
+                        sendEvent = "SIGNUP_FORM_SUBMIT_NA"
+                    }
+                    if (window.countryCodeGlobal && window.meArray && window.meArray.includes(window.countryCodeGlobal)) {
+                        sendEvent = "SIGNUP_FORM_SUBMIT_ME"
+                    }
+                    if (window.countryCodeGlobal && window.asiaArray && window.asiaArray.includes(window.countryCodeGlobal)) {
+                        sendEvent = "SIGNUP_FORM_SUBMIT_ASIA"
+                    }
+                    if (window.countryCodeGlobal && window.latamArray && window.latamArray.includes(window.countryCodeGlobal)) {
+                        sendEvent = "SIGNUP_FORM_SUBMIT_LATAM"
+                    }
+                    console.log('sendEvent', sendEvent)
+                    window.dataLayer.push({event: sendEvent});
                 }
                 if ($FPROM) {
                     $FPROM.trackSignup(
