@@ -217,22 +217,20 @@ function sendData() {
                 // Google analytics
                 if (window.dataLayer) {
                     let sendEvent = "SIGNUP_FORM_SUBMIT"
-                    console.log('countryCodeGlobal', countryCodeGlobal)
-                    console.log('euArray', euArray)
-                    console.log('euArray.includes(countryCodeGlobal)', euArray.includes(countryCodeGlobal))
-                    if (countryCodeGlobal && euArray && euArray.includes(countryCodeGlobal)) {
+                    console.log('window.countryCodeGlobal', window.countryCodeGlobal)
+                    if (window.countryCodeGlobal && euArray && euArray.includes(window.countryCodeGlobal)) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_EU"
                     }
-                    if (countryCodeGlobal && naArray && naArray.includes(countryCodeGlobal)) {
+                    if (window.countryCodeGlobal && naArray && naArray.includes(window.countryCodeGlobal)) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_NA"
                     }
-                    if (countryCodeGlobal && meArray && meArray.includes(countryCodeGlobal)) {
+                    if (window.countryCodeGlobal && meArray && meArray.includes(window.countryCodeGlobal)) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_ME"
                     }
-                    if (countryCodeGlobal && asiaArray && asiaArray.includes(countryCodeGlobal)) {
+                    if (window.countryCodeGlobal && asiaArray && asiaArray.includes(window.countryCodeGlobal)) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_ASIA"
                     }
-                    if (countryCodeGlobal && latamArray && latamArray.includes(countryCodeGlobal)) {
+                    if (window.countryCodeGlobal && latamArray && latamArray.includes(window.countryCodeGlobal)) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_LATAM"
                     }
                     console.log('sendEvent', sendEvent)
