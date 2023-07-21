@@ -30,7 +30,6 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
         }
 
         // CHECK PHONE INPUT
-        console.log('inputPhone', inputPhone)
         if (inputPhone) {
             inputPhone.intlTelInput({
                 utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/9.0.6/js/utils.js" ,
