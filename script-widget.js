@@ -36,8 +36,8 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
                 initialCountry: countryCode.toLowerCase()});
 
             inputPhone.on("input", function () {
-                input.intlTelInput("setNumber", input.val())
-                window.isValidNumber = input.intlTelInput("isValidNumber")
+                inputPhone.intlTelInput("setNumber", inputPhone.val())
+                window.isValidNumber = inputPhone.intlTelInput("isValidNumber")
             });
         }
 
