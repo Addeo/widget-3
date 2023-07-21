@@ -10,7 +10,7 @@ const euWidgetsCountryArray = ['AL', 'AD', 'AM', 'AT', 'BE', 'BA', 'BG', 'BY', '
 const uaeWidgetsCountryArray = ['AE', 'BH', 'EG', 'IR', 'IQ', 'IL', 'JO', 'KW', 'LB', 'OM', 'QA', 'SA', 'SY', 'TR', 'YE', 'DZ', 'EH', 'LY', 'MA', 'SD', 'TN', 'SS', 'IN', 'PK', 'BD', 'AO', 'SH', 'BJ', 'BW', 'BF', 'BI', 'CM', 'CV', 'CF', 'TD', 'KM', 'CG', 'CD', 'DJ', 'GQ', 'ER', 'SZ', 'ET', 'GA', 'GM', 'GH', 'GN', 'GW', 'CI', 'KE', 'LS', 'LR', 'MG', 'MW', 'ML', 'MR', 'MU', 'YT', 'MZ', 'NA', 'NE', 'NG', 'ST', 'RE', 'RW', 'ST', 'SN', 'SC', 'SL', 'SO', 'ZA', 'TZ', 'TG', 'UG', 'ZM', 'ZW'];
 
 const uaeWidgetKey = '2484172bec46f0d949814f774e384e09';
-
+const uaeWidgetKeyLeadsPage = 'd0d2ed0eedf561c123da4251393bc9e6';
 const defaultWidgetKey = '7ec27fa6d3df639b2075532161c17917';
 
 const EVENT_DEMO_FORM_SUBMIT_LEAD_PAGE_EU = 'DEMO_FORM_SUBMIT_EU';
