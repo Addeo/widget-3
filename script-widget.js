@@ -12,6 +12,11 @@ const exUae = document.getElementById("ex-uae");
 
 const inputPhone = $("#phone-2");
 
+const inputPhone2 = $("#phone_number-2");
+
+window.selectedCountryCode = '';
+window.internationalNumber = '';
+
 const form_field_country_code = document.getElementById('country_code');
 
 fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
@@ -20,7 +25,7 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
         let countryCode = responseParse.ip.country
 
         // SET GLOBAL COUNTRY CODE
-        window.countryCodeGlobal = countryCode;
+        window.countryCodeGlobal = countryCode.toLowerCase();
 
         // FORCE GEO PARAM
         if (window.geo_forse_country) {
@@ -42,6 +47,25 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
             inputPhone.on("input", function () {
                 inputPhone.intlTelInput("setNumber", inputPhone.val())
                 window.isValidNumber = inputPhone.intlTelInput("isValidNumber")
+            });
+        }
+
+        if (inputPhone2) {
+
+            inputPhone2.intlTelInput({
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/9.0.6/js/utils.js" ,
+                initialCountry: responseParse.ip.country.toLowerCase()});
+            inputPhone2.on("input", function () {
+                inputPhone2.intlTelInput("setNumber", inputPhone2.val())
+                window.isValidNumber = inputPhone2.intlTelInput("isValidNumber")
+                window.internationalNumber = inputPhone2.intlTelInput("getNumber");
+            });
+            inputPhone2.on("countrychange", (event) => {
+                const countryName = inputPhone2.intlTelInput("getSelectedCountryData");
+                if (countryName && countryName.iso2) {
+                    window.selectedCountryCode = countryName.iso2;
+                    window.internationalNumber = inputPhone2.intlTelInput("getNumber");
+                }
             });
         }
 
