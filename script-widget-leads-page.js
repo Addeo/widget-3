@@ -50,8 +50,8 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
             });
         }
 
+        // NEED REWRITE WITH ONE INPUT ID
         if (inputPhone2) {
-
             inputPhone2.intlTelInput({
                 utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/9.0.6/js/utils.js" ,
                 initialCountry: responseParse.ip.country.toLowerCase()});
