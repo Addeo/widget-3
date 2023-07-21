@@ -19,9 +19,13 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
     response.json().then(responseParse => {
         let countryCode = responseParse.ip.country
 
+        // SET GLOBAL COUNTRY CODE
+        window.countryCodeGlobal = countryCode;
+
         // FORCE GEO PARAM
         if (window.geo_forse_country) {
             countryCode = window.geo_forse_country
+            window.countryCodeGlobal = countryCode;
         }
 
         // CHECK FROM COUNTRY FIELD
