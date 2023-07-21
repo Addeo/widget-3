@@ -10,12 +10,35 @@ const elemUaeLogo = document.getElementById("UAE");
 
 const exUae = document.getElementById("ex-uae");
 
+const inputPhone = $("#phone-2");
+
+const form_field_country_code = document.getElementById('country_code');
+
 fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
     .then(function(response) {
     response.json().then(responseParse => {
         let countryCode = responseParse.ip.country
+
+        // FORCE GEO PARAM
         if (window.geo_forse_country) {
             countryCode = window.geo_forse_country
+        }
+
+        // CHECK FROM COUNTRY FIELD
+        if (form_field_country_code) {
+            form_field_country_code.value = countryCode;
+        }
+
+        // CHECK PHONE INPUT
+        if (inputPhone) {
+            inputPhone.intlTelInput({
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/9.0.6/js/utils.js" ,
+                initialCountry: countryCode.toLowerCase()});
+
+            inputPhone.on("input", function () {
+                input.intlTelInput("setNumber", input.val())
+                window.isValidNumber = input.intlTelInput("isValidNumber")
+            });
         }
 
         // WIDGET OPEN LOGIC
