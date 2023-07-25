@@ -206,19 +206,19 @@ function sendData() {
                 if (window.dataLayer) {
                     let sendEvent = "SIGNUP_FORM_SUBMIT"
                     console.log('window.countryCodeGlobal', window.countryCodeGlobal)
-                    if (window.countryCodeGlobal && window.euArray && window.euArray.includes(window.countryCodeGlobal)) {
+                    if (window.countryCodeGlobal && window.euArray && window.euArray.includes(window.countryCodeGlobal.toUpperCase())) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_EU"
                     }
-                    if (window.countryCodeGlobal && window.naArray && window.naArray.includes(window.countryCodeGlobal)) {
+                    if (window.countryCodeGlobal && window.naArray && window.naArray.includes(window.countryCodeGlobal.toUpperCase())) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_NA"
                     }
-                    if (window.countryCodeGlobal && window.meArray && window.meArray.includes(window.countryCodeGlobal)) {
+                    if (window.countryCodeGlobal && window.meArray && window.meArray.includes(window.countryCodeGlobal.toUpperCase())) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_ME"
                     }
-                    if (window.countryCodeGlobal && window.asiaArray && window.asiaArray.includes(window.countryCodeGlobal)) {
+                    if (window.countryCodeGlobal && window.asiaArray && window.asiaArray.includes(window.countryCodeGlobal.toUpperCase())) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_ASIA"
                     }
-                    if (window.countryCodeGlobal && window.latamArray && window.latamArray.includes(window.countryCodeGlobal)) {
+                    if (window.countryCodeGlobal && window.latamArray && window.latamArray.includes(window.countryCodeGlobal.toUpperCase())) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_LATAM"
                     }
                     console.log('sendEvent', sendEvent)
