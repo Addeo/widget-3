@@ -39,7 +39,7 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
         }
 
         // CHECK PHONE INPUT
-        if (inputPhone) {
+        if (inputPhone && inputPhone.intlTelInput) {
             inputPhone.intlTelInput({
                 utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/9.0.6/js/utils.js" ,
                 initialCountry: countryCode.toLowerCase()});
@@ -50,7 +50,7 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
             });
         }
 
-        if (inputPhone2) {
+        if (inputPhone2 && inputPhone2.intlTelInput) {
 
             inputPhone2.intlTelInput({
                 utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/9.0.6/js/utils.js" ,
