@@ -215,7 +215,7 @@ function sendData() {
                     if (window.countryCodeGlobal && meArray && meArray.includes(window.countryCodeGlobal.toUpperCase())) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_ME"
                     }
-                    if (window.countryCodeGlobal && window.asiaArray && window.asiaArray.includes(window.countryCodeGlobal.toUpperCase())) {
+                    if (window.countryCodeGlobal && asiaArray && asiaArray.includes(window.countryCodeGlobal.toUpperCase())) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_ASIA"
                     }
                     if (window.countryCodeGlobal && latamArray && latamArray.includes(window.countryCodeGlobal.toUpperCase())) {
