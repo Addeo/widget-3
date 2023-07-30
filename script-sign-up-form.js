@@ -24,6 +24,7 @@ if (agree) {
 }
 
 const showError = (input, msg) => {
+    console.log('showError', input, msg)
     const formControl = input.parentElement;
     formControl.classList.add("error");
     input.classList.add("error");
@@ -31,11 +32,13 @@ const showError = (input, msg) => {
         formControl.classList.add("error");
 
         const small = formControl.parentElement.querySelector(".extra");
+        console.log('small', small)
         if (small) {
             small.style.display = "block";
             small.textContent = msg;
         } else {
             const smallParent = formControl.parentElement;
+            console.log('smallParent', smallParent)
             const smallPhone = smallParent.parentElement.querySelector(".extra");
             if (smallPhone) {
                 smallPhone.style.display = "block";
