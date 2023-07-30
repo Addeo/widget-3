@@ -82,8 +82,10 @@ function checkEmail(input) {
 
 //checkRequired fields
 function checkRequired(inputArr) {
+    console.log('checkRequired', inputArr)
     let check = true
     inputArr.forEach(function(input) {
+        console.log(input)
         if (input.value && input.value.trim() === '') {
             showError(input, `${getFieldName(input)} is required`)
             check = false
