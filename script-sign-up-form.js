@@ -24,7 +24,6 @@ if (agree) {
 }
 
 const showError = (input, msg) => {
-    console.log('showError', input, msg)
     const formControl = input.parentElement;
     formControl.classList.add("error");
     input.classList.add("error");
@@ -32,13 +31,11 @@ const showError = (input, msg) => {
         formControl.classList.add("error");
 
         const small = formControl.parentElement.querySelector(".extra");
-        console.log('small', small)
         if (small) {
             small.style.display = "block";
             small.textContent = msg;
         } else {
             const smallParent = formControl.parentElement;
-            console.log('smallParent', smallParent)
             const smallPhone = smallParent.parentElement.querySelector(".extra");
             if (smallPhone) {
                 smallPhone.style.display = "block";
@@ -85,16 +82,12 @@ function checkEmail(input) {
 
 //checkRequired fields
 function checkRequired(inputArr) {
-    console.log('checkRequired', inputArr)
     let check = true
     inputArr.forEach(function(input) {
-        console.log(input, input.value, input.value.trim())
         if (input && (input.value !== undefined) && (input.value.trim() === '')) {
-            console.log('showError before', getFieldName(input), input)
             showError(input, `${getFieldName(input)} is required`)
             check = false
         } else {
-            console.log('showSuccess', input)
             showSuccess(input);
         }
     });
@@ -231,7 +224,6 @@ function sendData() {
                     if (window.countryCodeGlobal && latamArray && latamArray.includes(window.countryCodeGlobal.toUpperCase())) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_LATAM"
                     }
-                    console.log('sendEvent', sendEvent)
                     window.dataLayer.push({event: sendEvent});
                 }
                 if ($FPROM) {
