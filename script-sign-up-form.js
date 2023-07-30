@@ -1,8 +1,9 @@
 const form = document.querySelector("#signup-form");
 const email = document.querySelector("#email-2");
+const name = document.querySelector("#name");
 const affiliate = document.querySelector("#Affiliate-2");
 const password = document.querySelector("#password");
-const passwordConfirmation = document.querySelector("#confirm_password");
+// const passwordConfirmation = document.querySelector("#confirm_password");
 const phone = document.querySelector("#phone_number-2");
 const promoCode = document.querySelector("#promo_code-2");
 const agree = document.querySelector("#terms");
@@ -93,15 +94,15 @@ function checkRequired(inputArr) {
     return check
 }
 
-const checkPasswordMatch = (input1, input2) => {
-    if (input1.value !== input2.value) {
-        showError(input1, "Passwords must match");
-        return false
-    } else {
-        showSuccess(input1);
-        return true
-    }
-};
+// const checkPasswordMatch = (input1, input2) => {
+//     if (input1.value !== input2.value) {
+//         showError(input1, "Passwords must match");
+//         return false
+//     } else {
+//         showSuccess(input1);
+//         return true
+//     }
+// };
 
 
 const getFieldName = (input) => {
@@ -144,10 +145,11 @@ const checkPhone = (input) => {
 
 const validateForm = () => {
     const validateResult = [
-        checkRequired([email, password, passwordConfirmation]),
+        // checkRequired([email, password, passwordConfirmation]),
+        checkRequired([email, password, name]),
         checkLength(password, 8, 30),
         checkEmail(email),
-        checkPasswordMatch(passwordConfirmation, password),
+        // checkPasswordMatch(passwordConfirmation, password),
         checkPhone(phone),
         checkAgree(agree)
     ]
