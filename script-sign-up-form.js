@@ -86,7 +86,7 @@ function checkRequired(inputArr) {
     let check = true
     inputArr.forEach(function(input) {
         console.log(input)
-        if (input.value && input.value.trim() === '') {
+        if (input && input.value && input.value.trim() === '') {
             showError(input, `${getFieldName(input)} is required`)
             check = false
         } else {
