@@ -143,7 +143,8 @@ const checkPhone = (input) => {
     if (window.isValidNumber) {
         showSuccess(input);
     } else {
-        showError(input, `${getFieldName(input)} is not valid`)
+        // showError(input, `${getFieldName(input)} is not valid`)
+        showError(input, `Phone is not valid`)
     }
     return window.isValidNumber
 }
