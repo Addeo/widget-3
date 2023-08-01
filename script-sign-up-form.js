@@ -241,6 +241,11 @@ function sendData() {
                     const responseJson = JSON.parse(XHR.response)
                     if (errorTextMes) {
                         errorTextMes.textContent = responseJson.message
+                        if (responseJson.message === 'wrong promo code') {
+                            setTimeout(() => {
+                                window.location = "https://convolo.ai/success";
+                            }, 2000)
+                        }
                     } else {
                         console.log('no errorTextMes')
                     }
