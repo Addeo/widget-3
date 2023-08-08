@@ -55,7 +55,7 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
 
             inputPhone2.intlTelInput({
                 utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/9.0.6/js/utils.js" ,
-                initialCountry: responseParse.ip.country.toLowerCase()});
+                initialCountry: countryCode.toLowerCase()});
             inputPhone2.on("input", function () {
                 inputPhone2.intlTelInput("setNumber", inputPhone2.val())
                 window.isValidNumber = inputPhone2.intlTelInput("isValidNumber")
