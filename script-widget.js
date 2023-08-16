@@ -71,6 +71,8 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
         }
 
         // WIDGET OPEN LOGIC
+        console.log('countryCode', countryCode)
+        console.log('uaeWidgetsCountryArray', uaeWidgetsCountryArray)
         if (uaeWidgetsCountryArray.includes(countryCode.toUpperCase())) {
             console.log('uaeWidgetsCountryArray.includes, start with uaeWidgetKey', uaeWidgetKey)
             (function f() { var widget_key = uaeWidgetKey; window.leadCM = { widget_key: widget_key, }; var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true; em.src = 'https://app.convolo.ai/js/icallback.js?v=' + Math.random() + '&key=' + widget_key + '&uri=' + encodeURIComponent(window.location.href); var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s); })();
