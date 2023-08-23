@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Detect Click into iFrame</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
+  <style>
+    body{
+      padding: 30px;
+    }
+    iframe{
+      width: 100%;
+      height: 200px;
+      border: 2px solid #ccc;
+    }
+  </style>
+  <script>
+    $(document).ready(function(){
+      $("iframe").load(function(){
+        $(this).contents().on("mousedown, mouseup, click", function(){
+         console.log('hi')
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+<iframe src="https://artzolin.ru/javascript-examples/how-to-detect-click-inside-iframe-using-javascript/"></iframe>
+</body>
+</html>
+
+
