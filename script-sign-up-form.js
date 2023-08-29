@@ -198,6 +198,28 @@ function sendData() {
     } else {
         // console.log('no window.internationalNumber', window.internationalNumber)
     }
+
+    if (utm_source) {
+        formDataObj['utm_source'] = utm_source
+    }
+
+    if (utm_campaign) {
+        formDataObj['utm_campaign'] = utm_campaign
+    }
+
+    if (utm_content) {
+        formDataObj['utm_content'] = utm_content
+    }
+
+    if (utm_term) {
+        formDataObj['utm_term'] = utm_term
+    }
+
+    if (utm_medium) {
+        formDataObj['utm_medium'] = utm_medium
+    }
+
+
     const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
 
     XHR.onload = () => {
