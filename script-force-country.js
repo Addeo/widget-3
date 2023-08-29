@@ -1,3 +1,22 @@
+function getCookie(name) {
+    const nameEquals = name + '=';
+    const cookieArray = document.cookie.split(';');
+
+    for (cookie of cookieArray) {
+        while (cookie.charAt(0) == ' ') {
+            cookie = cookie.slice(1, cookie.length);
+        }
+
+        if (cookie.indexOf(nameEquals) == 0)
+            return decodeURIComponent(
+                cookie.slice(nameEquals.length, cookie.length),
+            );
+    }
+
+    return null;
+}
+
+
 let geo_forse_country
 
 let params = (new URL(document.location)).searchParams;
@@ -58,6 +77,19 @@ if (params.get("internal_user")) {
     utm_content = 'internal';
     utm_term = 'internal';
     utm_medium = 'internal';
+}
+
+const internalUserCookie = getCookie('gtm_internal_user');
+
+if (internalUserCookie) {
+    console.log('✅ The cookie exists: ', internalUserCookie);
+    utm_source = 'internal';
+    utm_campaign = 'internal';
+    utm_content = 'internal';
+    utm_term = 'internal';
+    utm_medium = 'internal';
+} else {
+    console.log('⛔️ The cookie does not exist');
 }
 
 console.log('check if params internal_user, then utm: ', utm_source, utm_campaign, utm_content, utm_term, utm_medium)
