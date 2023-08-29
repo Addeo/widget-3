@@ -88,4 +88,4 @@ if (params.get("utm_medium")) {
     window.localStorage.setItem('utm_medium', utm_medium)
 }
 
-console.log('check params-utm from url: ', utm_source, utm_campaign, utm_content, utm_term, utm_medium)
+console.log('check params-utm after url parse params: ', utm_source, utm_campaign, utm_content, utm_term, utm_medium)
