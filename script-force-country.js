@@ -64,28 +64,29 @@ console.log('check if params internal_user, then utm: ', utm_source, utm_campaig
 
 
 if (params.get("utm_source")) {
-    utm_source = window.localStorage.getItem('utm_source')
+    utm_source = params.get("utm_source")
     window.localStorage.setItem('utm_source', utm_source)
 }
 
 if (params.get("utm_campaign")) {
-    utm_campaign = window.localStorage.getItem('utm_campaign')
+    utm_campaign = params.get("utm_campaign")
     window.localStorage.setItem('utm_campaign', utm_campaign)
 }
 
 if (params.get("utm_content")) {
-    utm_content = window.localStorage.getItem('utm_content')
+    utm_content = params.get("utm_content")
     window.localStorage.setItem('utm_content', utm_content)
 }
 
 if (params.get("utm_term")) {
-    utm_term = window.localStorage.getItem('utm_term')
+    utm_term = params.get("utm_term")
     window.localStorage.setItem('utm_term', utm_term)
 }
 
 if (params.get("utm_medium")) {
-    utm_medium = window.localStorage.getItem('utm_medium')
+    utm_medium = params.get("utm_medium")
     window.localStorage.setItem('utm_medium', utm_medium)
 }
 
 console.log('check params-utm after url parse params: ', utm_source, utm_campaign, utm_content, utm_term, utm_medium)
+// utm_medium=viral&utm_campaign=Powered%20By%20Link&utm_source=test
