@@ -53,11 +53,11 @@ if (window.localStorage.getItem('utm_medium')) {
 console.log('check utm params from local storage: ', utm_source, utm_campaign, utm_content, utm_term, utm_medium)
 
 if (params.get("internal_user")) {
-    utm_source = 'interna';
-    utm_campaign = 'interna';
-    utm_content = 'interna';
-    utm_term = 'interna';
-    utm_medium = 'interna';
+    utm_source = 'internal';
+    utm_campaign = 'internal';
+    utm_content = 'internal';
+    utm_term = 'internal';
+    utm_medium = 'internal';
 }
 
 console.log('check if params internal_user, then utm: ', utm_source, utm_campaign, utm_content, utm_term, utm_medium)
