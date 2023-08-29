@@ -69,7 +69,7 @@ if (window.localStorage.getItem('utm_medium')) {
     utm_medium = window.localStorage.getItem('utm_medium')
 }
 
-console.log('check utm params from local storage: ', utm_source, utm_campaign, utm_content, utm_term, utm_medium)
+// console.log('check utm params from local storage: ', utm_source, utm_campaign, utm_content, utm_term, utm_medium)
 
 if (params.get("internal_user")) {
     utm_source = 'internal';
@@ -82,17 +82,17 @@ if (params.get("internal_user")) {
 const internalUserCookie = getCookie('gtm_internal_user');
 
 if (internalUserCookie) {
-    console.log('✅ The cookie exists: ', internalUserCookie);
+    // console.log('✅ The cookie exists: ', internalUserCookie);
     utm_source = 'internal';
     utm_campaign = 'internal';
     utm_content = 'internal';
     utm_term = 'internal';
     utm_medium = 'internal';
 } else {
-    console.log('⛔️ The cookie does not exist');
+    // console.log('⛔️ The cookie does not exist');
 }
 
-console.log('check if params internal_user, then utm: ', utm_source, utm_campaign, utm_content, utm_term, utm_medium)
+// console.log('check if params internal_user, then utm: ', utm_source, utm_campaign, utm_content, utm_term, utm_medium)
 
 
 if (params.get("utm_source")) {
@@ -120,5 +120,5 @@ if (params.get("utm_medium")) {
     window.localStorage.setItem('utm_medium', utm_medium)
 }
 
-console.log('check params-utm after url parse params: ', utm_source, utm_campaign, utm_content, utm_term, utm_medium)
+// console.log('check params-utm after url parse params: ', utm_source, utm_campaign, utm_content, utm_term, utm_medium)
 // utm_medium=viral&utm_campaign=Powered%20By%20Link&utm_source=test
