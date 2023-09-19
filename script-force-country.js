@@ -20,6 +20,7 @@ function getCookie(name) {
 let geo_forse_country
 
 let params = (new URL(document.location)).searchParams;
+console.log('params', params)
 
 if (params.get("_by")) {
     window.localStorage.setItem('paramPartner', params.get("_by"))
