@@ -217,7 +217,7 @@ function sendData() {
     if (paramPartner) {
         formDataObj['Affiliate'] = paramPartner;
         formDataObj['utm_source'] = 'Affiliate'
-        formDataObj['utm_compaign'] = paramPartner
+        formDataObj['utm_campaign'] = paramPartner
     } else {
         console.log('no paramPartner')
     }
