@@ -1,6 +1,6 @@
 function clickLogIn() {
 // Google analytics
     if (window.dataLayer) {
-        window.dataLayer.push({event: "LOG_IN"});
+        window.dataLayer.push({event: "LOGIN_BUTTON"});
     }
 }
