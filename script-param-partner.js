@@ -1,3 +1,8 @@
+let params2 = (new URL(document.location)).searchParams;
+
+if (params2.get("_by")) {
+    window.localStorage.setItem('paramPartner', params2.get("_by"))
+}
 const paramPartner = localStorage.getItem('paramPartner');
 if (paramPartner) {
     let affiliateffiliateField = document.getElementById("Affiliate")
