@@ -21,6 +21,10 @@ let geo_forse_country
 
 let params = (new URL(document.location)).searchParams;
 
+if (params.get("_by")) {
+    window.localStorage.setItem('paramPartner', params.get("_by"))
+}
+
 geo_forse_country = params.get("geo_forse_country");
 
 if (geo_forse_country) {
