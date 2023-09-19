@@ -183,12 +183,6 @@ function sendData() {
         // console.log('no window.selectedCountryCode', window.selectedCountryCode)
     }
 
-    const paramPartner = window.localStorage.getItem('paramPartner');
-    if (paramPartner) {
-        formDataObj['Affiliate'] = paramPartner;
-    } else {
-        console.log('no paramPartner')
-    }
 
     FD.delete("terms")
     FD.forEach((value, key) => (formDataObj[key] = value));
@@ -217,6 +211,15 @@ function sendData() {
 
     if (utm_medium) {
         formDataObj['utm_medium'] = utm_medium
+    }
+
+    const paramPartner = window.localStorage.getItem('paramPartner');
+    if (paramPartner) {
+        formDataObj['Affiliate'] = paramPartner;
+        formDataObj['utm_source'] = 'Affiliate'
+        formDataObj['utm_compaign'] = paramPartner
+    } else {
+        console.log('no paramPartner')
     }
 
 
