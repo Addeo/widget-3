@@ -24,6 +24,8 @@ console.log('params', params)
 
 if (params.get("_by")) {
     window.localStorage.setItem('paramPartner', params.get("_by"))
+    window.localStorage.setItem('utm_source', 'Affiliate')
+    window.localStorage.setItem('utm_campaign', params.get("_by"))
 }
 
 geo_forse_country = params.get("geo_forse_country");
