@@ -37,6 +37,7 @@ if (geo_forse_country) {
 let isMobileApp = params.get("mobile-app");
 
 if (!isMobileApp) {
+    console.log('create script hubstaff')
     (function f() {
         var em = document.createElement('script');
         em.type = 'text/javascript';
