@@ -225,7 +225,7 @@ function sendData() {
         formDataObj['utm_source'] = 'Affiliate'
         formDataObj['utm_campaign'] = paramPartner
     } else {
-        console.log('no paramPartner')
+        // console.log('no paramPartner')
     }
 
 
@@ -260,10 +260,10 @@ function sendData() {
                 if ($FPROM) {
                     $FPROM.trackSignup(
                         { email: formDataObj.email},
-                        function(){console.log('Callback received!')}
+                        // function(){console.log('Callback received!')}
                         );
                 } else {
-                    console.log('no $FPROM')
+                    // console.log('no $FPROM')
                 }
 
             } else {
@@ -278,10 +278,10 @@ function sendData() {
                             }, 2000)
                         }
                     } else {
-                        console.log('no errorTextMes')
+                        // console.log('no errorTextMes')
                     }
                 } else {
-                    console.log('no XHR.response')
+                    // console.log('no XHR.response')
                 }
             }
         }

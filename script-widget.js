@@ -28,7 +28,7 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
         window.countryCodeGlobal = countryCode.toLowerCase();
 
         // FORCE GEO PARAM
-        console.log('geo_forse_country', geo_forse_country)
+        // console.log('geo_forse_country', geo_forse_country)
         if (geo_forse_country) {
             countryCode = geo_forse_country
             window.countryCodeGlobal = countryCode;
