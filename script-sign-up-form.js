@@ -193,25 +193,25 @@ function sendData() {
         // console.log('no window.internationalNumber', window.internationalNumber)
     }
 
-    if (utm_source) {
-        formDataObj['utm_source'] = utm_source
-    }
-
-    if (utm_campaign) {
-        formDataObj['utm_campaign'] = utm_campaign
-    }
-
-    if (utm_content) {
-        formDataObj['utm_content'] = utm_content
-    }
-
-    if (utm_term) {
-        formDataObj['utm_term'] = utm_term
-    }
-
-    if (utm_medium) {
-        formDataObj['utm_medium'] = utm_medium
-    }
+    // if (utm_source) {
+    //     formDataObj['utm_source'] = utm_source
+    // }
+    //
+    // if (utm_campaign) {
+    //     formDataObj['utm_campaign'] = utm_campaign
+    // }
+    //
+    // if (utm_content) {
+    //     formDataObj['utm_content'] = utm_content
+    // }
+    //
+    // if (utm_term) {
+    //     formDataObj['utm_term'] = utm_term
+    // }
+    //
+    // if (utm_medium) {
+    //     formDataObj['utm_medium'] = utm_medium
+    // }
 
     const paramPartner = window.localStorage.getItem('paramPartner');
     if (paramPartner) {
