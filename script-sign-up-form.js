@@ -193,11 +193,11 @@ function sendData() {
         // console.log('no window.internationalNumber', window.internationalNumber)
     }
 
-    let utm_sourceFromLocalStorage = window.localStorage.getItem('utm_source')
-    let utm_campaignFromLocalStorage = window.localStorage.getItem('utm_campaign')
-    let utm_contentFromLocalStorage = window.localStorage.getItem('utm_content')
-    let utm_termFromLocalStorage = window.localStorage.getItem('utm_term')
-    let utm_mediumFromLocalStorage = window.localStorage.getItem('utm_medium')
+    const utm_sourceFromLocalStorage = window.localStorage.getItem('utm_source')
+    const utm_campaignFromLocalStorage = window.localStorage.getItem('utm_campaign')
+    const utm_contentFromLocalStorage = window.localStorage.getItem('utm_content')
+    const utm_termFromLocalStorage = window.localStorage.getItem('utm_term')
+    const utm_mediumFromLocalStorage = window.localStorage.getItem('utm_medium')
 
     if (utm_sourceFromLocalStorage) {
         formDataObj['utm_source'] = utm_sourceFromLocalStorage
