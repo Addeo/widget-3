@@ -193,25 +193,31 @@ function sendData() {
         // console.log('no window.internationalNumber', window.internationalNumber)
     }
 
-    // if (utm_source) {
-    //     formDataObj['utm_source'] = utm_source
-    // }
-    //
-    // if (utm_campaign) {
-    //     formDataObj['utm_campaign'] = utm_campaign
-    // }
-    //
-    // if (utm_content) {
-    //     formDataObj['utm_content'] = utm_content
-    // }
-    //
-    // if (utm_term) {
-    //     formDataObj['utm_term'] = utm_term
-    // }
-    //
-    // if (utm_medium) {
-    //     formDataObj['utm_medium'] = utm_medium
-    // }
+    let utm_sourceFromLocalStorage = window.localStorage.getItem('utm_source')
+    let utm_campaignFromLocalStorage = window.localStorage.getItem('utm_campaign')
+    let utm_contentFromLocalStorage = window.localStorage.getItem('utm_content')
+    let utm_termFromLocalStorage = window.localStorage.getItem('utm_term')
+    let utm_mediumFromLocalStorage = window.localStorage.getItem('utm_medium')
+
+    if (utm_sourceFromLocalStorage) {
+        formDataObj['utm_source'] = utm_sourceFromLocalStorage
+    }
+
+    if (utm_campaignFromLocalStorage) {
+        formDataObj['utm_campaign'] = utm_campaignFromLocalStorage
+    }
+
+    if (utm_contentFromLocalStorage) {
+        formDataObj['utm_content'] = utm_contentFromLocalStorage
+    }
+
+    if (utm_termFromLocalStorage) {
+        formDataObj['utm_term'] = utm_termFromLocalStorage
+    }
+
+    if (utm_mediumFromLocalStorage) {
+        formDataObj['utm_medium'] = utm_mediumFromLocalStorage
+    }
 
     const paramPartner = window.localStorage.getItem('paramPartner');
     if (paramPartner) {
