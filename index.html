@@ -151,12 +151,12 @@
     (function f() {
         // если только локально сделать true
         const ONLY_LOCAL = true;
-        const USE_TEST_SETTINGS = true;
+        const USE_TEST_SETTINGS = false;
         const NO_REAL_CALLS = true;
 
         // будет использоваться тестовое окружение если не ONLY_LOCAL
         let widget_key = "0f378dcbd7f891dd29590b34f9d1ccb6";
-        let base_url = "https://testapp.leadcm.com";
+        let base_url = "https://app.convolo.ai";
 
         // start for test page
         const lc_widget_key = window.location.search ?
@@ -208,19 +208,18 @@
 
         window.leadCM = leadCM;
 
-        const script_url = ONLY_LOCAL ? 'main.js' : base_url + '/js/icallback.js';
+        const script_url = ONLY_LOCAL ? 'main.js' : base_url + './icallback.js';
 
         const em = document.createElement('script');
         em.type = 'text/javascript';
         em.async = true;
-        em.src = script_url + '?v=' + Math.random() + '&key=' + widget_key
-            + '&uri=' + encodeURIComponent(window.location.href);
+        em.src = script_url
         const s = document.getElementsByTagName('script')[0];
         // noinspection JSCheckFunctionSignatures
         s.parentNode.insertBefore(em, s);
     })();
 </script>
-<!-- <script> (function f() { var widget_key = '0f378dcbd7f891dd29590b34f9d1ccb6'; window.leadCM = { widget_key: widget_key, }; var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true; em.src = 'https://app.convolo.ai/js/icallback.js?v=' + Math.random() + '&key=' + widget_key + '&uri=' + encodeURIComponent(window.location.href); var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s); })(); </script> -->
+<!-- <script> (function f() { var widget_key = '0f378dcbd7f891dd29590b34f9d1ccb6'; window.leadCM = { widget_key: widget_key, }; var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true; em.src = './icallback.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s); })(); </script>-->
 
 <script>
     const devices = new RegExp('Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini', "i");
