@@ -114,3 +114,41 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
     .catch(function(error) {
         (function f() { var widget_key = defaultWidgetKey; window.leadCM = { widget_key: widget_key, }; var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true; em.src = 'https://app.leadconnect.cc/js/icallback.js?v=' + Math.random() + '&key=' + widget_key + '&uri=' + encodeURIComponent(window.location.href); var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s); })();
 });
+
+
+function getCookie(name) {
+    var dc = document.cookie;
+    console.log('dc', dc)
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+    }
+    else
+    {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+            end = dc.length;
+        }
+    }
+    // because unescape has been deprecated, replaced with decodeURI
+    //return unescape(dc.substring(begin + prefix.length, end));
+    return decodeURI(dc.substring(begin + prefix.length, end));
+}
+
+var myCookie = getCookie("gtm_internal_user");
+var params3 = (new URL(document.location)).searchParams;
+var internalUser = params3.get("internal_user");
+
+if (myCookie && internalUser && internalUser == 'true') {
+    } else {
+    var em = document.createElement('script');
+    em.type = 'text/javascript';
+    em.async = true;
+    em.defer = true;
+    em.src = '//js.hs-scripts.com/7840017.js'
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(em, s);
+}
