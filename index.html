@@ -101,8 +101,11 @@
     (function f() {
         // если только локально сделать true
         const ONLY_LOCAL = true;
-        const USE_TEST_SETTINGS = false;
+        const USE_TEST_SETTINGS = true;
         const NO_REAL_CALLS = true;
+        console.log('ONLY_LOCAL', ONLY_LOCAL)
+        console.log('USE_TEST_SETTINGS', USE_TEST_SETTINGS)
+        console.log('NO_REAL_CALLS', NO_REAL_CALLS)
         // будет использоваться тестовое окружение если не ONLY_LOCAL
         let widget_key = "0f378dcbd7f891dd29590b34f9d1ccb6";
         let base_url = "https://app.convolo.ai";
