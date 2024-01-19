@@ -1,3 +1,5 @@
+console.log('redirect')
+
 fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
     .then(function(response) {
         response.json().then(responseParse => {
