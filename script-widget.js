@@ -112,7 +112,6 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
         // HIDE-OPEN BY CLASS
         const hideMiddleEast = Array.from(document.getElementsByClassName("hide_for_middle_east"));
         hideMiddleEast.forEach((element) => {
-            console.log('element', element)
             if (['EG', 'PK', 'BD', 'IN', 'KW', 'BH', 'AE', 'SA', 'QA', 'OM', 'YE'].includes(countryCode.toUpperCase())) {
                 element.style.display = 'none'
             }
