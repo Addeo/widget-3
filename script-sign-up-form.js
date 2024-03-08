@@ -170,6 +170,7 @@ form.addEventListener("submit", function(e) {
 
 
 function sendData() {
+    console.log('sendData test')
     errorMes.style.display = "none";
     const XHR = new XMLHttpRequest();
     const FD = new FormData(form);
@@ -231,10 +232,12 @@ function sendData() {
 
     const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
 
+    const buttonRegister = document.getElementById("register-get-started-button");
+    if (buttonRegister) buttonRegister.setAttribute('disabled', true)
     XHR.onload = () => {
         if (XHR.readyState === 4) {
             if (XHR.status === 200 || XHR.status === 201) {
-
+                if (buttonRegister) buttonRegister.removeAttribute('disabled')
                 window.location.href = 'https://convolo.ai/success';
                 // Google analytics
                 if (window.dataLayer) {
@@ -267,6 +270,7 @@ function sendData() {
                 }
 
             } else {
+                if (buttonRegister) buttonRegister.removeAttribute('disabled')
                 errorMes.style.display = "flex";
                 if (XHR.response) {
                     const responseJson = JSON.parse(XHR.response)
