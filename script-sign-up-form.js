@@ -9,7 +9,7 @@ const promoCode = document.querySelector("#promo_code-2");
 const agree = document.querySelector("#terms");
 const errorMes = document.querySelector(".error-mes");
 const errorTextMes = document.querySelector("#text-error-message");
-console.log('8.03')
+
 if (agree) {
     agree.addEventListener('click', () => {
         if (agree.checked) {
@@ -170,7 +170,6 @@ form.addEventListener("submit", function(e) {
 
 
 function sendData() {
-    console.log('sendData test')
     errorMes.style.display = "none";
     const XHR = new XMLHttpRequest();
     const FD = new FormData(form);
