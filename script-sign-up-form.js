@@ -236,7 +236,9 @@ function sendData() {
     XHR.onload = () => {
         if (XHR.readyState === 4) {
             if (XHR.status === 200 || XHR.status === 201) {
-                if (buttonRegister) buttonRegister.removeAttribute('disabled')
+                setTimeout(() => {
+                    if (buttonRegister) buttonRegister.removeAttribute('disabled')
+                }, 1000)
                 window.location.href = 'https://convolo.ai/success';
                 // Google analytics
                 if (window.dataLayer) {
@@ -269,7 +271,9 @@ function sendData() {
                 }
 
             } else {
-                if (buttonRegister) buttonRegister.removeAttribute('disabled')
+                setTimeout(() => {
+                    if (buttonRegister) buttonRegister.removeAttribute('disabled')
+                }, 1000)
                 errorMes.style.display = "flex";
                 if (XHR.response) {
                     const responseJson = JSON.parse(XHR.response)
