@@ -10,7 +10,7 @@ const agree = document.querySelector("#terms");
 const errorMes = document.querySelector(".error-mes");
 const errorTextMes = document.querySelector("#text-error-message");
 
-console.log('NOT recaptcha')
+console.log('with recaptcha')
 if (agree) {
     agree.addEventListener('click', () => {
         if (agree.checked) {
@@ -165,15 +165,15 @@ form.addEventListener("submit", function(e) {
     if (validateForm()) {
         console.log('sendData')
         console.log('grecaptcha', grecaptcha)
-        // if (grecaptcha) {
-        //     grecaptcha.ready(function() {
-        //         grecaptcha.execute('reCAPTCHA_site_key', {action: 'submit'}).then(function(token) {
-        //             sendData(token)
-        //         });
-        //     });
-        // } else {
+        if (grecaptcha) {
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Lfjn0kpAAAAAA21iTl8kcvjNrg45zVjHANc1wUJ', {action: 'submit'}).then(function(token) {
+                    sendData(token)
+                });
+            });
+        } else {
             sendData()
-        // }
+        }
     } else {
         console.log('error')
     }
