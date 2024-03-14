@@ -10,6 +10,7 @@ const agree = document.querySelector("#terms");
 const errorMes = document.querySelector(".error-mes");
 const errorTextMes = document.querySelector("#text-error-message");
 
+console.log('add recaptcha')
 if (agree) {
     agree.addEventListener('click', () => {
         if (agree.checked) {
