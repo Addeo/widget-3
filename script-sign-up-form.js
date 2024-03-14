@@ -163,27 +163,23 @@ form.addEventListener("submit", function(e) {
     e.preventDefault();
     e.stopPropagation();
     if (validateForm()) {
-        sendData()
+        console.log('sendData')
+        console.log('grecaptcha', grecaptcha)
+        if (grecaptcha) {
+            grecaptcha.ready(function() {
+                grecaptcha.execute('reCAPTCHA_site_key', {action: 'submit'}).then(function(token) {
+                    sendData(token)
+                });
+            });
+        } else {
+            sendData()
+        }
     } else {
         console.log('error')
     }
 });
 
-function sendData() {
-    console.log('sendData')
-    console.log('grecaptcha', grecaptcha)
-    if (grecaptcha) {
-        grecaptcha.ready(function() {
-            grecaptcha.execute('reCAPTCHA_site_key', {action: 'submit'}).then(function(token) {
-                logicOfSendData(token)
-            });
-        });
-    } else {
-        logicOfSendData()
-    }
-}
-
-function logicOfSendData(token) {
+function sendData(token) {
     errorMes.style.display = "none";
     const XHR = new XMLHttpRequest();
     const FD = new FormData(form);
