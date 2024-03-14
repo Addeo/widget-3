@@ -168,8 +168,21 @@ form.addEventListener("submit", function(e) {
     }
 });
 
-
 function sendData() {
+    console.log('sendData')
+    console.log('grecaptcha', grecaptcha)
+    if (grecaptcha) {
+        grecaptcha.ready(function() {
+            grecaptcha.execute('reCAPTCHA_site_key', {action: 'submit'}).then(function(token) {
+                logicOfSendData(token)
+            });
+        });
+    } else {
+        logicOfSendData()
+    }
+}
+
+function logicOfSendData(token) {
     errorMes.style.display = "none";
     const XHR = new XMLHttpRequest();
     const FD = new FormData(form);
@@ -228,6 +241,10 @@ function sendData() {
         // console.log('no paramPartner')
     }
 
+    if (token) {
+        console.log('add token to send form')
+        formDataObj['recaptchaToken'] = token
+    }
 
     const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
 
