@@ -1,4 +1,5 @@
 const form = document.querySelector("#signup-form");
+const form2 = document.getElementById('signup-form')
 const email = document.querySelector("#email-2");
 const name = document.querySelector("#name");
 const affiliate = document.querySelector("#Affiliate-2");
@@ -10,7 +11,6 @@ const agree = document.querySelector("#terms");
 const errorMes = document.querySelector(".error-mes");
 const errorTextMes = document.querySelector("#text-error-message");
 
-console.log('with recaptcha')
 if (agree) {
     agree.addEventListener('click', () => {
         if (agree.checked) {
