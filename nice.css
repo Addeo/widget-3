@@ -1,12 +1,12 @@
 :root {
     /* ----------- Colors ----------- */
     --list-bg-color: white;
-    --list-text-color: inherit; /* Use "inherit" to take on parent text color */
+    --list-text-color: #858585; /* Use "inherit" to take on parent text color */
     --list-text-color-hover: inherit; /* Add your hex code here for the hover text color on the list option/item */
-    --current-field-text-color: inherit; /* Add hex code for selected option text color in the field itself */
-    --select-field-arrow-color: black; /* This is the select field arrow color */
-    --border-color-active: black; /* Active State */
-    --border-color-hover: #dcdcdd; /* Select Field could be the same as your form field border color */
+    --current-field-text-color: #858585; /* Add hex code for selected option text color in the field itself */
+    --select-field-arrow-color: #858585; /* This is the select field arrow color */
+    --border-color-active: #0074ff; /* Active State */
+    --border-color-hover: #0074ff; /* Select Field could be the same as your form field border color */
     --list-item-bg-color: #ededed; /* Select Field Hover/Focus State */
 
     /* ----------- Spacing ----------- */
@@ -39,6 +39,9 @@
     -ms-user-select: none;
     user-select: none;
     white-space: nowrap;
+    margin: 0px;
+    height: 48px;
+    padding-left: 40px;
 }
 
 
@@ -88,6 +91,8 @@
     -webkit-transform: scale(1) translateY(0);
     -ms-transform: scale(1) translateY(0);
     transform: scale(1) translateY(0);
+    height: 150px;
+    padding-bottom: 0px;
 }
 
 
@@ -104,6 +109,8 @@
 
 
 .nice-select.wide {
+    display: flex;
+    align-items: center;
     width: 100%;
 }
 
@@ -225,4 +232,9 @@ span.current {
 
 .no-csspointerevents .nice-select.open .list {
     display: block;
+}
+
+.input_outter_select-wrapper-affiliate{
+    margin-bottom: 16px;
+    height: 48px;
 }
