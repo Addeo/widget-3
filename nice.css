@@ -2,7 +2,7 @@
     /* ----------- Colors ----------- */
     --list-bg-color: white;
     --list-text-color: #858585; /* Use "inherit" to take on parent text color */
-    --list-text-color-hover: inherit; /* Add your hex code here for the hover text color on the list option/item */
+    --list-text-color-hover: #dedddd; /* Add your hex code here for the hover text color on the list option/item */
     --current-field-text-color: #858585; /* Add hex code for selected option text color in the field itself */
     --select-field-arrow-color: #858585; /* This is the select field arrow color */
     --border-color-active: #0074ff; /* Active State */
@@ -10,7 +10,7 @@
     --list-item-bg-color: #ededed; /* Select Field Hover/Focus State */
 
     /* ----------- Spacing ----------- */
-    --select-field-padding-left: 12px; /* Match the padding values for your form fields */
+    --select-field-padding-left: 40px; /* Match the padding values for your form fields */
     --select-field-padding-right: 12px; /* Match the padding values for your form fields */
     --list-padding-top-bottom: 10px; /* This is the top and bottom padding for the dropdown list */
     --list-max-height: 150px; /* You can set this to "Auto" as well */
@@ -41,7 +41,9 @@
     white-space: nowrap;
     margin: 0px;
     height: 48px;
-    padding-left: 40px;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
 }
 
 
@@ -56,15 +58,15 @@
 
 
 .nice-select:after {
-    border-bottom: 2px solid var(--select-field-arrow-color);
-    border-right: 2px solid var(--select-field-arrow-color);
+    border-bottom: 1px solid var(--select-field-arrow-color);
+    border-right: 1px solid var(--select-field-arrow-color);
     content: '';
     display: block;
     height: 5px;
     margin-top: -4px;
     pointer-events: none;
     position: absolute;
-    right: 12px;
+    right: 20px;
     top: 50%;
     -webkit-transform-origin: 66% 66%;
     -ms-transform-origin: 66% 66%;
@@ -93,6 +95,11 @@
     transform: scale(1) translateY(0);
     height: 150px;
     padding-bottom: 0px;
+    padding-top: 0px;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #00060D;
 }
 
 
@@ -188,7 +195,8 @@
 
 .nice-select .option {
     cursor: pointer;
-    font-weight: 400;
+    font-weight: 300;
+    font-size: 14px;
     line-height: var(--list-item-line-height);
     list-style: none;
     min-height: var(--list-item-min-height);
@@ -205,6 +213,11 @@
 }
 
 span.current {
+    color: #00060D;
+}
+
+span.current[text='Main Interest']
+{
     color: var(--current-field-text-color);
 }
 
@@ -213,7 +226,7 @@ span.current {
 }
 
 .nice-select .option.selected {
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 .nice-select .option:hover {
