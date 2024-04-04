@@ -216,9 +216,12 @@ span.current {
     color: #00060D;
 }
 
-span.current[text='Main Interest']
-{
+span[text='Main Interest'] {
     color: var(--current-field-text-color);
+}
+
+span:contains("Main Interest") {
+    /* CSS styles */
 }
 
 .nice-select .option:hover, .nice-select .option.focus, .nice-select .option.selected.focus {
@@ -226,7 +229,7 @@ span.current[text='Main Interest']
 }
 
 .nice-select .option.selected {
-    /*font-weight: bold;*/
+    font-weight: 300;
 }
 
 .nice-select .option:hover {
