@@ -192,20 +192,15 @@ form.addEventListener("submit", function(e) {
 });
 
 form.addEventListener("click", function(e) {
-    console.log('click')
     const mainInterest = document.getElementById("mainInterest");
-    console.log(mainInterest.value)
-    console.log(mainInterest)
     if (mainInterest.value == 'Main Interest' || mainInterest.value == '' || !mainInterest.value) {
         const spanElements = document.getElementsByClassName("current");
         if (spanElements[0]) {
-            console.log('set #858585')
             spanElements[0].style.color = '#858585'
         }
     } else {
         const spanElements = document.getElementsByClassName("current");
         if (spanElements[0]) {
-            console.log('set #00060D')
             spanElements[0].style.color = '#00060D'
         }
     }
@@ -213,13 +208,11 @@ form.addEventListener("click", function(e) {
         if (mainInterest.value == 'Main Interest' || mainInterest.value == '' || !mainInterest.value) {
             const spanElements = document.getElementsByClassName("current");
             if (spanElements[0]) {
-                console.log('set #858585')
                 spanElements[0].style.color = '#858585'
             }
         } else {
             const spanElements = document.getElementsByClassName("current");
             if (spanElements[0]) {
-                console.log('set #00060D')
                 spanElements[0].style.color = '#00060D'
             }
         }
