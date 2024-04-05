@@ -194,8 +194,9 @@ form.addEventListener("submit", function(e) {
 form.addEventListener("click", function(e) {
     console.log('click')
     const mainInterest = document.getElementById("mainInterest");
-
-    if (mainInterest.value == 'Main Interest') {
+    console.log(mainInterest.value)
+    console.log(mainInterest)
+    if (mainInterest.value == 'Main Interest' || mainInterest.value == '' || !mainInterest.value) {
         const spanElements = document.getElementsByClassName("current");
         if (spanElements[0]) {
             console.log('set #858585')
