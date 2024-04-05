@@ -147,12 +147,12 @@
 
                     try {
                         var message = JSON.parse(e.data);
-                        console.log('message', message)
+                        // console.log('message', message)
                         if (message && message.event) {
                             var event = message.event.replace('embed.form.', '');
                             var callback = config.events ? config.events[event] : null;
                             if (callback) {
-                                console.log('message.data', message.data)
+                                // console.log('message.data', message.data)
                                 callback(message.data);
                             }
                         }

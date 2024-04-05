@@ -4,7 +4,7 @@ const btn = document.querySelector("#btn-submit");
 const errorMes = document.querySelector(".error-mes");
 const form = document.querySelector('#wf-form-Signin-Form');
 
-console.log(form)
+// console.log(form)
 
 function checkPassword(input) {
     if ( password.value.length > 0 ) {
@@ -69,15 +69,15 @@ const validateForm = () => {
 };
 
 form.addEventListener("submit",  (e) => {
-    console.log('submit')
+    // console.log('submit')
     e.preventDefault();
     e.stopPropagation();
 
     if(validateForm()) {
-        console.log('ok')
+        // console.log('ok')
         sendData();
     } else {
-        console.log('ne ok')
+        // console.log('ne ok')
     }
 })
 

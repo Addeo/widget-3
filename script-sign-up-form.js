@@ -163,8 +163,6 @@ form.addEventListener("submit", function(e) {
     e.preventDefault();
     e.stopPropagation();
     if (validateForm()) {
-        console.log('sendData')
-        console.log('grecaptcha', grecaptcha)
         if (grecaptcha) {
             grecaptcha.ready(function() {
                 grecaptcha.execute('6Lfjn0kpAAAAAA21iTl8kcvjNrg45zVjHANc1wUJ', {action: 'submit'}).then(function(token) {
@@ -178,7 +176,6 @@ form.addEventListener("submit", function(e) {
         console.log('error')
     }
 });
-
 
 form.addEventListener("change", (event) => {
     console.log('event', event)
@@ -245,7 +242,7 @@ function sendData(token) {
     }
 
     if (token) {
-        console.log('add token to send form')
+        // console.log('add token to send form')
         formDataObj['recaptchaToken'] = token
     }
 
@@ -263,7 +260,7 @@ function sendData(token) {
                 // Google analytics
                 if (window.dataLayer) {
                     let sendEvent = "SIGNUP_FORM_SUBMIT"
-                    console.log('window.countryCodeGlobal', window.countryCodeGlobal)
+                    // console.log('window.countryCodeGlobal', window.countryCodeGlobal)
                     if (window.countryCodeGlobal && euArray && euArray.includes(window.countryCodeGlobal.toUpperCase())) {
                         sendEvent = "SIGNUP_FORM_SUBMIT_EU"
                     }
