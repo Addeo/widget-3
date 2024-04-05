@@ -88,6 +88,20 @@ function checkEmail(input) {
 function checkRequired(inputArr) {
     let check = true
     inputArr.forEach(function(input) {
+        if (input && (input.value !== undefined) && (input.value.trim() === '')) {
+            showError(input, `${getFieldName(input)} is required`)
+            check = false
+        } else {
+            showSuccess(input);
+        }
+    });
+    return check
+}
+
+//checkRequired fields
+function checkInterest(inputArr) {
+    let check = true
+    inputArr.forEach(function(input) {
         console.log('input', input)
         console.log('input.value', input.value)
         if (input && (input.value !== undefined) && (input.value.trim() === '')) {
@@ -153,7 +167,8 @@ const checkPhone = (input) => {
 const validateForm = () => {
     const validateResult = [
         // checkRequired([email, password, passwordConfirmation]),
-        checkRequired([email, password, name, mainInterest]),
+        checkRequired([email, password, name]),
+        checkInterest([mainInterest]),
         checkLength(password, 8, 30),
         checkEmail(email),
         // checkPasswordMatch(passwordConfirmation, password),
