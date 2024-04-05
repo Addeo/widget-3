@@ -255,8 +255,9 @@ span:contains("Main Interest") {
     height: 48px;
 }
 
-/*@media screen and (min-width: 1440px) {*/
-/*    .input_outter_select-wrapper-affiliate{*/
-/*        height: 56px;*/
-/*    }*/
-/*}*/
+@media (min-width: 1440px) {
+    .input_outter_select-wrapper-affiliate{
+        height: 56px;
+        margin-bottom: 16px;
+    }
+}
