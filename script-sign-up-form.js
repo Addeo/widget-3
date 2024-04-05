@@ -179,6 +179,12 @@ form.addEventListener("submit", function(e) {
     }
 });
 
+
+form.addEventListener("change", (event) => {
+    console.log('event', event)
+    // if ()
+});
+
 function sendData(token) {
     errorMes.style.display = "none";
     const XHR = new XMLHttpRequest();
