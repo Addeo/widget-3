@@ -158,7 +158,7 @@ const validateForm = () => {
     return validateResult.every(v => v === true)
 };
 
-// const mainInterestSelect =  document.querySelector("#mainInterest");
+// const mainInterestSelect = document.querySelector("#mainInterest");
 // console.log(mainInterestSelect)
 // if (mainInterestSelect) {
 //     console.log('add listeners')
@@ -190,6 +190,24 @@ form.addEventListener("submit", function(e) {
         console.log('error')
     }
 });
+
+form.addEventListener("click", function(e) {
+    console.log('click')
+    const mainInterest = document.getElementById("#mainInterest");
+    if (mainInterest.value == 'Main Interest') {
+        const spanElements = document.getElementsByClassName("current");
+        if (spanElements[0]) {
+            console.log('set #858585')
+            spanElements[0].style.color = '#858585'
+        }
+    } else {
+        const spanElements = document.getElementsByClassName("current");
+        if (spanElements[0]) {
+            console.log('set #00060D')
+            spanElements[0].style.color = '#00060D'
+        }
+    }
+})
 
 function sendData(token) {
     errorMes.style.display = "none";
@@ -325,6 +343,3 @@ function sendData(token) {
     XHR.setRequestHeader("Access-Control-Allow-Origin", "*");
     XHR.send(sendObject);
 }
-
-console.log('Main Interest')
-$("span:contains('Main Interest')" ).css( "color", "#858585" );
