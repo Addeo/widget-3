@@ -1,6 +1,7 @@
 const form = document.querySelector("#signup-form");
 const form2 = document.getElementById('signup-form')
 const email = document.querySelector("#email-2");
+const mainInterest = document.querySelector("#mainInterest");
 const name = document.querySelector("#name");
 const affiliate = document.querySelector("#Affiliate-2");
 const password = document.querySelector("#password");
@@ -148,7 +149,7 @@ const checkPhone = (input) => {
 const validateForm = () => {
     const validateResult = [
         // checkRequired([email, password, passwordConfirmation]),
-        checkRequired([email, password, name]),
+        checkRequired([email, password, name, mainInterest]),
         checkLength(password, 8, 30),
         checkEmail(email),
         // checkPasswordMatch(passwordConfirmation, password),
