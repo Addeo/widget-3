@@ -158,6 +158,20 @@ const validateForm = () => {
     return validateResult.every(v => v === true)
 };
 
+const mainInterestSelect =  document.querySelector("#mainInterest");
+console.log(mainInterestSelect)
+if (mainInterestSelect) {
+    console.log('add listeners')
+    mainInterestSelect.addEventListener("change", (value) => {
+        console.log(value)
+    }, false);
+    mainInterestSelect.addEventListener("input", (value) => {
+        console.log('input', value)
+    }, false);
+    mainInterestSelect.addEventListener("click", (value) => {
+        console.log('click', value)
+    }, false);
+}
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -177,25 +191,13 @@ form.addEventListener("submit", function(e) {
     }
 });
 
+form.addEventListener("click", function(e) {
+    console.log('click')
+})
 // form.addEventListener("change", (event) => {
 //     console.log('event', event)
 //     // if ()
 // });
-
-const mainInterestSelect =  document.querySelector("#mainInterest");
-console.log(mainInterestSelect)
-if (mainInterestSelect) {
-    console.log('add listeners')
-    mainInterestSelect.addEventListener("change", (value) => {
-        console.log(value)
-    }, false);
-    mainInterestSelect.addEventListener("input", (value) => {
-        console.log('input', value)
-    }, false);
-    mainInterestSelect.addEventListener("click", (value) => {
-        console.log('click', value)
-    }, false);
-}
 
 function sendData(token) {
     errorMes.style.display = "none";
