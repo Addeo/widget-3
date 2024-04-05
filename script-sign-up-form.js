@@ -333,3 +333,5 @@ function sendData(token) {
     XHR.setRequestHeader("Access-Control-Allow-Origin", "*");
     XHR.send(sendObject);
 }
+
+$("span:contains('Main Interest')" ).css( "color", "#858585" );
