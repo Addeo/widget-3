@@ -260,4 +260,8 @@ span:contains("Main Interest") {
         height: 56px;
         margin-bottom: 16px;
     }
+
+    .nice-select{
+        height: 56px;
+    }
 }
