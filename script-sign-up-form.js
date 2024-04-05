@@ -26,8 +26,10 @@ if (agree) {
 }
 
 const showError = (input, msg) => {
+    console.log(input, msg)
     const formControl = input.parentElement;
     formControl.classList.add("error");
+    console.log(formControl)
     input.classList.add("error");
     if (formControl) {
         formControl.classList.add("error");
@@ -86,6 +88,8 @@ function checkEmail(input) {
 function checkRequired(inputArr) {
     let check = true
     inputArr.forEach(function(input) {
+        console.log('input', input)
+        console.log('input.value', input.value)
         if (input && (input.value !== undefined) && (input.value.trim() === '')) {
             showError(input, `${getFieldName(input)} is required`)
             check = false
