@@ -177,10 +177,17 @@ form.addEventListener("submit", function(e) {
     }
 });
 
-form.addEventListener("change", (event) => {
-    console.log('event', event)
-    // if ()
-});
+// form.addEventListener("change", (event) => {
+//     console.log('event', event)
+//     // if ()
+// });
+
+const mainInterestSelect =  document.querySelector("#mainInterest");
+if (mainInterestSelect) {
+    mainInterestSelect.addEventListener("change", (value) => {
+        console.log(value)
+    }, false);
+}
 
 function sendData(token) {
     errorMes.style.display = "none";
