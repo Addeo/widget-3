@@ -265,3 +265,12 @@ span:contains("Main Interest") {
         height: 56px;
     }
 }
+
+@media (min-width: 1920px) {
+    .nice-select .option {
+        max-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+}
