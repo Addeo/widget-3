@@ -42,7 +42,8 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
         // CHECK PHONE INPUT
         if (inputPhone && inputPhone.intlTelInput) {
             inputPhone.intlTelInput({
-                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/9.0.6/js/utils.js" ,
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.0.3/js/utils.js" ,
+                strictMode: true,
                 initialCountry: countryCode.toLowerCase()});
 
             inputPhone.on("input", function () {
@@ -54,7 +55,8 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
         if (inputPhone2 && inputPhone2.intlTelInput) {
 
             inputPhone2.intlTelInput({
-                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/9.0.6/js/utils.js" ,
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.0.3/js/utils.js" ,
+                strictMode: true,
                 initialCountry: countryCode.toLowerCase()});
             inputPhone2.on("input", function () {
                 inputPhone2.intlTelInput("setNumber", inputPhone2.val())
