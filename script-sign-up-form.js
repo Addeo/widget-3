@@ -193,7 +193,8 @@ form.addEventListener("submit", function(e) {
 
 form.addEventListener("click", function(e) {
     console.log('click')
-    const mainInterest = document.getElementById("#mainInterest");
+    const mainInterest = document.getElementById("mainInterest");
+
     if (mainInterest.value == 'Main Interest') {
         const spanElements = document.getElementsByClassName("current");
         if (spanElements[0]) {
