@@ -25,6 +25,20 @@ if (agree) {
     })
 }
 
+const showErrorSelect = (input, msg) => {
+    const errorMainInterestError = document.querySelector("#mainInterestError");
+    if (errorMainInterestError) {
+        errorMainInterestError.style.display = "block";
+    }
+}
+
+const showSuccessSelect = (input, msg) => {
+    const errorMainInterestError = document.querySelector("#mainInterestError");
+    if (errorMainInterestError) {
+        errorMainInterestError.style.display = "none";
+    }
+}
+
 const showError = (input, msg) => {
     console.log(input, msg)
     const formControl = input.parentElement;
@@ -104,12 +118,12 @@ function checkInterest(inputArr) {
     inputArr.forEach(function(input) {
         console.log('input', input)
         console.log('input.value', input.value)
-        // if (input && (input.value !== undefined) && (input.value.trim() === '')) {
-        //     showError(input, `${getFieldName(input)} is required`)
-        //     check = false
-        // } else {
-        //     showSuccess(input);
-        // }
+        if (input && (input.value !== undefined) && (input.value.trim() === '')) {
+            showErrorSelect(input, `${getFieldName(input)} is required`)
+            check = false
+        } else {
+            showSuccessSelect(input);
+        }
     });
     return check
 }
