@@ -40,10 +40,8 @@ const showSuccessSelect = (input, msg) => {
 }
 
 const showError = (input, msg) => {
-    console.log(input, msg)
     const formControl = input.parentElement;
     formControl.classList.add("error");
-    console.log(formControl)
     input.classList.add("error");
     if (formControl) {
         formControl.classList.add("error");
@@ -116,8 +114,6 @@ function checkRequired(inputArr) {
 function checkInterest(inputArr) {
     let check = true
     inputArr.forEach(function(input) {
-        console.log('input', input)
-        console.log('input.value', input.value)
         if (input && (input.value !== undefined) && (input.value.trim() === '')) {
             showErrorSelect(input, `${getFieldName(input)} is required`)
             check = false
