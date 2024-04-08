@@ -42,7 +42,7 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
             // CHECK PHONE INPUT
             if (inputPhone && inputPhone.intlTelInput) {
                 inputPhone.intlTelInput({
-                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/21.0.8/js/utils.js",
+                    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@21.0.8/build/js/utils.js",
                     strictMode: true,
                     initialCountry: countryCode.toLowerCase()
                 });
@@ -56,7 +56,7 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
             if (inputPhone2 && inputPhone2.intlTelInput) {
 
                 inputPhone2.intlTelInput({
-                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/21.0.8/js/utils.js",
+                    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@21.0.8/build/js/utils.js",
                     strictMode: true,
                     initialCountry: countryCode.toLowerCase()
                 });
@@ -204,5 +204,5 @@ if (myCookie && internalUser && internalUser == 'true') {
     s.parentNode.insertBefore(em, s);
 }
 
-// <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/21.0.8/css/intlTelInput.css"/>
-// <script src='https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/21.0.8/js/intlTelInput.js'></script>
+// <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.0.3/css/intlTelInput.css"/>
+// <script src='https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.0.3/js/intlTelInput.js'></script>
