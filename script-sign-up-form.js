@@ -12,6 +12,14 @@ const agree = document.querySelector("#terms");
 const errorMes = document.querySelector(".error-mes");
 const errorTextMes = document.querySelector("#text-error-message");
 
+let force_self_onboarding_ai_register
+let params2 = (new URL(document.location)).searchParams;
+
+
+force_self_onboarding_ai_register = params2.get("force_self_onboarding_ai_register");
+console.log('params', params2)
+console.log('force_self_onboarding_ai_register', force_self_onboarding_ai_register)
+
 if (agree) {
     agree.addEventListener('click', () => {
         if (agree.checked) {
@@ -302,13 +310,6 @@ function sendData(token) {
 
     const buttonRegister = document.getElementById("register-get-started-button");
     if (buttonRegister) buttonRegister.setAttribute('disabled', true)
-
-    let force_self_onboarding_ai_register
-    let params2 = (new URL(document.location)).searchParams;
-
-
-    force_self_onboarding_ai_register = params.get("force_self_onboarding_ai_register");
-// console.log('params', params)
 
     let registerUrl = 'https://api.leads.convolo.ai/api/v2/auth/register'
     if (force_self_onboarding_ai_register){
