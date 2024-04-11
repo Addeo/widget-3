@@ -256,7 +256,8 @@ function sendData(token) {
         // console.log('no window.selectedCountryCode', window.selectedCountryCode)
     }
 
-
+    console.log('agree_to_terms')
+    formDataObj.agree_to_terms = true
     FD.delete("terms")
     FD.forEach((value, key) => (formDataObj[key] = value));
     if (window.internationalNumber) {
@@ -355,6 +356,7 @@ function sendData(token) {
                 }
 
                 if (force_self_onboarding_ai_register) {
+
                     var myobj = JSON.parse(XHR.response)
                     if(myobj.token) {
                         window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
