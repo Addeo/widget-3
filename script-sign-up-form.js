@@ -315,6 +315,10 @@ function sendData(token) {
     if (buttonRegister) buttonRegister.setAttribute('disabled', true)
 
     let registerUrl = 'https://api.leads.convolo.ai/api/v2/auth/register'
+    // sk12_test@gmail.com
+    console.log('formDataObj', formDataObj)
+    console.log('mainInterest', formDataObj['mainInterest'])
+    console.log('()', (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent'))
     if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
         console.log('force_self_onboarding_ai_register')
         registerUrl = 'https://api.leads.convolo.ai/api/v2/auth/register-self-onboarding'
