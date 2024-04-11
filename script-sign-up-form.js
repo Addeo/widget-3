@@ -302,6 +302,20 @@ function sendData(token) {
 
     const buttonRegister = document.getElementById("register-get-started-button");
     if (buttonRegister) buttonRegister.setAttribute('disabled', true)
+
+    let force_self_onboarding_ai_register
+    let params2 = (new URL(document.location)).searchParams;
+
+
+    force_self_onboarding_ai_register = params.get("force_self_onboarding_ai_register");
+// console.log('params', params)
+
+    let registerUrl = 'https://api.leads.convolo.ai/api/v2/auth/register'
+    if (force_self_onboarding_ai_register){
+        console.log('force_self_onboarding_ai_register')
+        registerUrl = 'https://api.leads.convolo.ai/api/v2/auth/register-self-onboarding'
+    }
+
     XHR.onload = () => {
         if (XHR.readyState === 4) {
             if (XHR.status === 200 || XHR.status === 201) {
@@ -339,6 +353,15 @@ function sendData(token) {
                     // console.log('no $FPROM')
                 }
 
+                if (force_self_onboarding_ai_register) {
+                    var myobj = JSON.parse(XHR.response)
+                    if(myobj.token) {
+                        window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                    } else {
+                        // window.location.href = `https://new.app.convolo.ai/pages/pbx/self-onboarding?is_login=${myobj.token}`
+                    }
+                }
+
             } else {
                 setTimeout(() => {
                     if (buttonRegister) buttonRegister.removeAttribute('disabled')
@@ -363,7 +386,7 @@ function sendData(token) {
         }
     };
 
-    XHR.open("POST", "https://api.leads.convolo.ai/api/v2/auth/register");
+    XHR.open("POST", registerUrl);
     XHR.setRequestHeader("Content-type", "application/json");
     XHR.setRequestHeader("Access-Control-Allow-Origin", "*");
     XHR.send(sendObject);
