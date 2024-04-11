@@ -362,9 +362,10 @@ function sendData(token) {
                 }
 
                 if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
-
+                    console.log('force_self_onboarding_ai_register2')
                     var myobj = JSON.parse(XHR.response)
                     if(myobj.token) {
+                        console.log('myobj.token', myobj.token)
                         window.location.href = `https://new.app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
                         // window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
                     } else {
