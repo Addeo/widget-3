@@ -256,8 +256,10 @@ function sendData(token) {
         // console.log('no window.selectedCountryCode', window.selectedCountryCode)
     }
 
-    console.log('agree_to_terms')
-    formDataObj.agree_to_terms = true
+    if (force_self_onboarding_ai_register) {
+        formDataObj.agree_to_terms = true
+    }
+
     FD.delete("terms")
     FD.forEach((value, key) => (formDataObj[key] = value));
     if (window.internationalNumber) {
@@ -313,7 +315,7 @@ function sendData(token) {
     if (buttonRegister) buttonRegister.setAttribute('disabled', true)
 
     let registerUrl = 'https://api.leads.convolo.ai/api/v2/auth/register'
-    if (force_self_onboarding_ai_register){
+    if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
         console.log('force_self_onboarding_ai_register')
         registerUrl = 'https://api.leads.convolo.ai/api/v2/auth/register-self-onboarding'
     }
@@ -355,11 +357,12 @@ function sendData(token) {
                     // console.log('no $FPROM')
                 }
 
-                if (force_self_onboarding_ai_register) {
+                if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
 
                     var myobj = JSON.parse(XHR.response)
                     if(myobj.token) {
-                        window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                        window.location.href = `https://new.app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                        // window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
                     } else {
                         // window.location.href = `https://new.app.convolo.ai/pages/pbx/self-onboarding?is_login=${myobj.token}`
                     }
