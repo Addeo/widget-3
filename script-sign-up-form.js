@@ -17,6 +17,7 @@ let params2 = (new URL(document.location)).searchParams;
 
 
 force_self_onboarding_ai_register = params2.get("force_self_onboarding_ai_register");
+console.log('fix success page')
 console.log('params', params2)
 console.log('force_self_onboarding_ai_register', force_self_onboarding_ai_register)
 
@@ -330,7 +331,7 @@ function sendData(token) {
                 setTimeout(() => {
                     if (buttonRegister) buttonRegister.removeAttribute('disabled')
                 }, 1000)
-                window.location.href = 'https://convolo.ai/success';
+
                 // Google analytics
                 if (window.dataLayer) {
                     let sendEvent = "SIGNUP_FORM_SUBMIT"
@@ -365,12 +366,16 @@ function sendData(token) {
                     console.log('force_self_onboarding_ai_register2')
                     var myobj = JSON.parse(XHR.response)
                     if(myobj.token) {
-                        console.log('myobj.token', myobj.token)
+                        console.log('myobj.token')
                         window.location.href = `https://new.app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
                         // window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
                     } else {
+                        console.log('else')
+                        window.location.href = 'https://convolo.ai/success';
                         // window.location.href = `https://new.app.convolo.ai/pages/pbx/self-onboarding?is_login=${myobj.token}`
                     }
+                } else {
+                    window.location.href = 'https://convolo.ai/success';
                 }
 
             } else {
