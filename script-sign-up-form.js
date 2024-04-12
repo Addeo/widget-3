@@ -12,6 +12,15 @@ const agree = document.querySelector("#terms");
 const errorMes = document.querySelector(".error-mes");
 const errorTextMes = document.querySelector("#text-error-message");
 
+let force_self_onboarding_ai_register
+let params2 = (new URL(document.location)).searchParams;
+
+
+force_self_onboarding_ai_register = params2.get("force_self_onboarding_ai_register");
+console.log('$FPROM fix!!!')
+console.log('params', params2)
+console.log('force_self_onboarding_ai_register', force_self_onboarding_ai_register)
+
 if (agree) {
     agree.addEventListener('click', () => {
         if (agree.checked) {
@@ -248,6 +257,9 @@ function sendData(token) {
         // console.log('no window.selectedCountryCode', window.selectedCountryCode)
     }
 
+    if (force_self_onboarding_ai_register) {
+        formDataObj.agree_to_terms = true
+    }
 
     FD.delete("terms")
     FD.forEach((value, key) => (formDataObj[key] = value));
@@ -302,13 +314,24 @@ function sendData(token) {
 
     const buttonRegister = document.getElementById("register-get-started-button");
     if (buttonRegister) buttonRegister.setAttribute('disabled', true)
+
+    let registerUrl = 'https://api.leads.convolo.ai/api/v2/auth/register'
+    // sk12_test@gmail.com
+    console.log('formDataObj', formDataObj)
+    console.log('mainInterest', formDataObj['mainInterest'])
+    console.log('()', (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent'))
+    if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
+        console.log('force_self_onboarding_ai_register')
+        registerUrl = 'https://api.leads.convolo.ai/api/v2/auth/register-ai-onboarding'
+    }
+
     XHR.onload = () => {
         if (XHR.readyState === 4) {
             if (XHR.status === 200 || XHR.status === 201) {
                 setTimeout(() => {
                     if (buttonRegister) buttonRegister.removeAttribute('disabled')
                 }, 1000)
-                window.location.href = 'https://convolo.ai/success';
+
                 // Google analytics
                 if (window.dataLayer) {
                     let sendEvent = "SIGNUP_FORM_SUBMIT"
@@ -330,13 +353,31 @@ function sendData(token) {
                     }
                     window.dataLayer.push({event: sendEvent});
                 }
-                if ($FPROM) {
-                    $FPROM.trackSignup(
+                if (window.$FPROM) {
+                    window.$FPRROM.trackSignup(
                         { email: formDataObj.email},
                         // function(){console.log('Callback received!')}
                         );
                 } else {
                     // console.log('no $FPROM')
+                }
+
+                console.log('prev force_self_onboarding_ai_register2')
+                if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
+                    console.log('force_self_onboarding_ai_register2')
+                    var myobj = JSON.parse(XHR.response)
+                    if(myobj.token) {
+                        console.log('myobj.token')
+                        window.location.href = `https://new.app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                        // window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                    } else {
+                        console.log('else')
+                        window.location.href = 'https://convolo.ai/success';
+                        // window.location.href = `https://new.app.convolo.ai/pages/pbx/self-onboarding?is_login=${myobj.token}`
+                    }
+                } else {
+                    console.log('prev success')
+                    window.location.href = 'https://convolo.ai/success';
                 }
 
             } else {
@@ -363,7 +404,7 @@ function sendData(token) {
         }
     };
 
-    XHR.open("POST", "https://api.leads.convolo.ai/api/v2/auth/register");
+    XHR.open("POST", registerUrl);
     XHR.setRequestHeader("Content-type", "application/json");
     XHR.setRequestHeader("Access-Control-Allow-Origin", "*");
     XHR.send(sendObject);
