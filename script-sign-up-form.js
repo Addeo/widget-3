@@ -17,7 +17,7 @@ let params2 = (new URL(document.location)).searchParams;
 
 
 force_self_onboarding_ai_register = params2.get("force_self_onboarding_ai_register");
-console.log('fix!!!')
+console.log('$FPROM fix!!!')
 console.log('params', params2)
 console.log('force_self_onboarding_ai_register', force_self_onboarding_ai_register)
 
