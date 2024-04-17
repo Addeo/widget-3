@@ -312,7 +312,7 @@ function sendData(token) {
 
     const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
 
-    const buttonRegister = document.getElementById("#register-get-started-button");
+    const buttonRegister = document.querySelector('#register-get-started-button')
     console.log('buttonRegister', buttonRegister)
     if (buttonRegister) {
         console.log('buttonRegister set attribute')
