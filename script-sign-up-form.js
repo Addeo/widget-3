@@ -356,14 +356,6 @@ function sendData(token) {
                     }
                     window.dataLayer.push({event: sendEvent});
                 }
-                if (window.$FPROM) {
-                    window.$FPRROM.trackSignup(
-                        { email: formDataObj.email},
-                        // function(){console.log('Callback received!')}
-                        );
-                } else {
-                    // console.log('no $FPROM')
-                }
 
                 console.log('prev force_self_onboarding_ai_register2')
                 if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
@@ -403,6 +395,15 @@ function sendData(token) {
                 } else {
                     // console.log('no XHR.response')
                 }
+            }
+
+            if (window.$FPROM) {
+                window.$FPRROM.trackSignup(
+                    { email: formDataObj.email},
+                    // function(){console.log('Callback received!')}
+                );
+            } else {
+                // console.log('no $FPROM')
             }
         }
     };
