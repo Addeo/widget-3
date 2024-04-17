@@ -319,7 +319,7 @@ function sendData(token) {
         buttonRegister.setAttribute('disabled', 'true')
         setTimeout(() => {
             buttonRegister.setAttribute('disabled', 'false')
-        }, 2000)
+        }, 4000)
     }
 
     let registerUrl = 'https://api.leads.convolo.ai/api/v2/auth/register'
@@ -335,10 +335,6 @@ function sendData(token) {
     XHR.onload = () => {
         if (XHR.readyState === 4) {
             if (XHR.status === 200 || XHR.status === 201) {
-                setTimeout(() => {
-                    if (buttonRegister) buttonRegister.removeAttribute('disabled')
-                }, 1000)
-
                 // Google analytics
                 if (window.dataLayer) {
                     let sendEvent = "SIGNUP_FORM_SUBMIT"
