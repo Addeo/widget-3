@@ -375,6 +375,15 @@ function sendData(token) {
                     window.location.href = 'https://convolo.ai/success';
                 }
 
+                if (window.$FPROM) {
+                    window.$FPRROM.trackSignup(
+                        { email: formDataObj.email},
+                        // function(){console.log('Callback received!')}
+                    );
+                } else {
+                    // console.log('no $FPROM')
+                }
+
             } else {
                 setTimeout(() => {
                     if (buttonRegister) buttonRegister.removeAttribute('disabled')
@@ -395,15 +404,6 @@ function sendData(token) {
                 } else {
                     // console.log('no XHR.response')
                 }
-            }
-
-            if (window.$FPROM) {
-                window.$FPRROM.trackSignup(
-                    { email: formDataObj.email},
-                    // function(){console.log('Callback received!')}
-                );
-            } else {
-                // console.log('no $FPROM')
             }
         }
     };
