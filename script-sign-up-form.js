@@ -251,10 +251,7 @@ function sendData(token) {
     const promo = FD.get("promo_code");
     if (!promo) FD.set("promo_code", '')
     if (window.selectedCountryCode) {
-        // console.log('window.selectedCountryCode', window.selectedCountryCode)
         formDataObj['country_code'] = window.selectedCountryCode;
-    } else {
-        // console.log('no window.selectedCountryCode', window.selectedCountryCode)
     }
 
     if (force_self_onboarding_ai_register) {
@@ -263,11 +260,9 @@ function sendData(token) {
 
     FD.delete("terms")
     FD.forEach((value, key) => (formDataObj[key] = value));
+
     if (window.internationalNumber) {
-        // console.log('window.internationalNumber', window.internationalNumber)
         formDataObj['phone_number'] = window.internationalNumber;
-    } else {
-        // console.log('no window.internationalNumber', window.internationalNumber)
     }
 
     const utm_sourceFromLocalStorage = window.localStorage.getItem('utm_source')
@@ -301,19 +296,15 @@ function sendData(token) {
         formDataObj['Affiliate'] = paramPartner;
         formDataObj['utm_source'] = 'Affiliate'
         formDataObj['utm_campaign'] = paramPartner
-    } else {
-        // console.log('no paramPartner')
     }
 
     if (token) {
-        // console.log('add token to send form')
         formDataObj['recaptchaToken'] = token
     }
 
     const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
 
     const buttonRegister = document.querySelector('#register-get-started-button')
-    // console.log('buttonRegister', buttonRegister)
     if (buttonRegister) {
         buttonRegister.setAttribute('disabled', 'true')
         setTimeout(() => {

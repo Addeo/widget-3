@@ -4,8 +4,6 @@ const btn = document.querySelector("#btn-submit");
 const errorMes = document.querySelector(".error-mes");
 const form = document.querySelector('#wf-form-Signin-Form');
 
-// console.log(form)
-
 function checkPassword(input) {
     if ( password.value.length > 0 ) {
         showSuccess(input)
@@ -69,15 +67,11 @@ const validateForm = () => {
 };
 
 form.addEventListener("submit",  (e) => {
-    // console.log('submit')
     e.preventDefault();
     e.stopPropagation();
 
     if(validateForm()) {
-        // console.log('ok')
         sendData();
-    } else {
-        // console.log('ne ok')
     }
 })
 
@@ -90,27 +84,34 @@ function sendData() {
         email: email.value
     };
 
-    console.log(formDataObj)
+    if (btn) {
+        btn.setAttribute('disabled', 'true')
+        setTimeout(() => {
+            btn.setAttribute('disabled', 'false')
+        }, 4000)
+    }
 
     const sendObject = JSON.stringify(formDataObj)
-    console.log(sendObject)
     XHR.onload = () => {
-        console.log(XHR)
         if (XHR.readyState === 4) {
             if (XHR.status === 200 || XHR.status === 201) {
                 var myobj = JSON.parse(XHR.response)
                 console.log(myobj)
                 if(myobj.token) {
                     setTimeout(()=> {
-// window.open(`http://localhost:3201/pages/dashboard?is_login=${myobj.token}&current_page=/pages/dashboard`, '_self');
-// window.
-                        window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/dashboard`
-                    }, 500)
+                        let force_login_param_to_new_app = ''
+                        let loginParams = (new URL(document.location)).searchParams;
 
-                } else {
-                    // window.location.href = `https://new.app.convolo.ai/pages/pbx/self-onboarding?is_login=${myobj.token}`
+                        force_login_param_to_new_app = loginParams.get("force_login_param_to_new_app");
+
+                        if (force_login_param_to_new_app) {
+                            console.log('myobj', myobj)
+                            window.location.href = `https://new.app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/dashboard`
+                        } else {
+                            window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/dashboard`
+                        }
+                    }, 500)
                 }
-                // http://localhost:4201/security/login?is_login=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDYwMDQ5MDgsImljYklkIjo3MDUxOSwidmVyIjoidjEiLCJpYXQiOjE3MDU0MDAxMDh9.-3-hIQivnmBTgYAgBe-qvzdcM5uvWw8SQ9MEGPsKdJw&current_page=/pages/dashboard
             } else {
                 errorMes.style.display = "flex";
                 if (XHR.response) {
@@ -119,11 +120,8 @@ function sendData() {
                         errorTextMes.textContent = responseJson.message
                         console.error(errorTextMes);
                     }
-                } else {
-                    // console.log('no errorTextMes')
                 }
             }
-            // console.log('no XHR.response')
         }
     };
 
