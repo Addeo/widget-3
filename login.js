@@ -101,9 +101,9 @@ function sendData() {
                     setTimeout(()=> {
                         let force_login_param_to_new_app = ''
                         let loginParams = (new URL(document.location)).searchParams;
-
+                        console.log('loginParams', loginParams)
                         force_login_param_to_new_app = loginParams.get("force_login_param_to_new_app");
-
+                        console.log('force_login_param_to_new_app', force_login_param_to_new_app)
                         if (force_login_param_to_new_app) {
                             console.log('myobj', myobj)
                             window.location.href = `https://new.app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/dashboard`
