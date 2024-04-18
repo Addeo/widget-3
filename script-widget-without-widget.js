@@ -120,7 +120,6 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
 
 function getCookie(name) {
     var dc = document.cookie;
-    console.log('dc', dc)
     var prefix = name + "=";
     var begin = dc.indexOf("; " + prefix);
     if (begin == -1) {
