@@ -96,22 +96,16 @@ function sendData() {
         if (XHR.readyState === 4) {
             if (XHR.status === 200 || XHR.status === 201) {
                 var myobj = JSON.parse(XHR.response)
-                console.log(myobj)
                 if(myobj.token) {
                     setTimeout(()=> {
                         let force_login_param_to_new_app = ''
                         let force_login_param_to_local = ''
                         let loginParams = (new URL(document.location)).searchParams;
-                        console.log('loginParams', loginParams)
                         force_login_param_to_new_app = loginParams.get("force_login_param_to_new_app");
                         force_login_param_to_local = loginParams.get("force_login_param_to_local");
-                        console.log('force_login_param_to_new_app', force_login_param_to_new_app)
-                        console.log('force_login_param_to_local', force_login_param_to_local)
                         if (force_login_param_to_new_app) {
-                            console.log('myobj', myobj)
                             window.location.href = `https://new.app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/dashboard`
                         } else if (force_login_param_to_local) {
-                            console.log('myobj', myobj)
                             window.location.href = `http://localhost:3201/security/login?is_login=${myobj.token}&current_page=/pages/dashboard`
                         } else {
                             window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/dashboard`
