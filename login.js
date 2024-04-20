@@ -5,7 +5,7 @@ const errorMes = document.querySelector(".error-mes");
 const form = document.querySelector('#wf-form-Signin-Form');
 const btnSubmit = document.querySelector('#btn-submit');
 
-console.log('new logic add attribute button')
+console.log('new logic add attribute input to  button')
 
 /** Need add to style in the future */
 if (btnSubmit) {
