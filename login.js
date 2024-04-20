@@ -5,11 +5,12 @@ const errorMes = document.querySelector(".error-mes");
 const form = document.querySelector('#wf-form-Signin-Form');
 const btnSubmit = document.querySelector('#btn-submit');
 
-console.log('new logic')
+console.log('new logic add attribute button')
 
 /** Need add to style in the future */
 if (btnSubmit) {
     btnSubmit.style.textAlign = 'center';
+    btnSubmit.setAttribute('type', 'button')
 }
 
 function checkPassword(input) {
