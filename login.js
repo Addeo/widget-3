@@ -3,6 +3,14 @@ const password = document.querySelector("#password");
 const btn = document.querySelector("#btn-submit");
 const errorMes = document.querySelector(".error-mes");
 const form = document.querySelector('#wf-form-Signin-Form');
+const btnSubmit = document.querySelector('#btn-submit');
+
+console.log('new logic')
+
+/** Need add to style in the future */
+if (btnSubmit) {
+    btnSubmit.style.textAlign = 'center';
+}
 
 function checkPassword(input) {
     if ( password.value.length > 0 ) {
@@ -74,6 +82,17 @@ form.addEventListener("submit",  (e) => {
         sendData();
     }
 })
+
+if (btnSubmit) {
+    btnSubmit.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if(validateForm()) {
+            sendData();
+        }
+    })
+}
 
 function sendData() {
     errorMes.style.display = "none";
