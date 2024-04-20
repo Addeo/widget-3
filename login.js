@@ -10,7 +10,7 @@ console.log('new logic add attribute button')
 /** Need add to style in the future */
 if (btnSubmit) {
     btnSubmit.style.textAlign = 'center';
-    btnSubmit.setAttribute('type', 'button')
+    // btnSubmit.setAttribute('type', 'button')
 }
 
 function checkPassword(input) {
