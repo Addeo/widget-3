@@ -76,6 +76,7 @@ const validateForm = () => {
 };
 
 form.addEventListener("submit",  (e) => {
+    console.log('form submit')
     e.preventDefault();
     e.stopPropagation();
 
@@ -86,6 +87,7 @@ form.addEventListener("submit",  (e) => {
 
 if (btnSubmit) {
     btnSubmit.addEventListener('click', (e) => {
+        console.log('click')
         e.preventDefault();
         e.stopPropagation();
 
