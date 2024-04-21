@@ -4,6 +4,7 @@ const btn = document.querySelector("#btn-submit");
 const errorMes = document.querySelector(".error-mes");
 const form = document.querySelector('#wf-form-Signin-Form');
 const btnSubmit = document.querySelector('#btn-submit');
+const loginBtn = document.querySelector('#login-btn');
 
 console.log('new logic add attribute input to  button')
 
@@ -87,6 +88,19 @@ form.addEventListener("submit",  (e) => {
 
 if (btnSubmit) {
     btnSubmit.addEventListener('click', (e) => {
+        console.log('click')
+        e.preventDefault();
+        e.stopPropagation();
+
+        if(validateForm()) {
+            sendData();
+        }
+    })
+}
+
+
+if (loginBtn) {
+    loginBtn.addEventListener('click', (e) => {
         console.log('click')
         e.preventDefault();
         e.stopPropagation();
