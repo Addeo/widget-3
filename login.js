@@ -140,11 +140,11 @@ function sendData() {
                         force_login_param_to_new_app = loginParams.get("force_login_param_to_new_app");
                         force_login_param_to_local = loginParams.get("force_login_param_to_local");
                         if (force_login_param_to_new_app) {
-                            window.location.href = `https://new.app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/dashboard`
+                            window.location.href = `https://new.app.convolo.ai/security/login?is_login=${myobj.token}`
                         } else if (force_login_param_to_local) {
-                            window.location.href = `http://localhost:3201/security/login?is_login=${myobj.token}&current_page=/pages/dashboard`
+                            window.location.href = `http://localhost:3201/security/login?is_login=${myobj.token}`
                         } else {
-                            window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/dashboard`
+                            window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}`
                         }
                     }, 500)
                 }
