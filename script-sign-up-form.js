@@ -349,14 +349,14 @@ function sendData(token) {
                 if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
                     var myobj = JSON.parse(XHR.response)
                     if(myobj.token) {
-                        window.location.href = `https://new.app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                        window.location.href = `https://app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
                         // window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
                     } else {
-                        window.location.href = 'https://convolo.ai/success';
+                        window.location.href = 'https://brightcall.ai/success';
                         // window.location.href = `https://new.app.convolo.ai/pages/pbx/self-onboarding?is_login=${myobj.token}`
                     }
                 } else {
-                    window.location.href = 'https://convolo.ai/success';
+                    window.location.href = 'https://brightcall.ai/success';
                 }
 
                 if (window.$FPROM) {
@@ -379,7 +379,7 @@ function sendData(token) {
                         errorTextMes.textContent = responseJson.message
                         if (responseJson.message === 'wrong promo code') {
                             setTimeout(() => {
-                                window.location = "https://convolo.ai/success";
+                                window.location = "https://brightcall.ai/success";
                             }, 2000)
                         }
                     } else {
