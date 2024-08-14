@@ -3,8 +3,16 @@ const password = document.querySelector("#password");
 const btn = document.querySelector("#btn-submit");
 const errorMes = document.querySelector(".error-mes");
 const form = document.querySelector('#wf-form-Signin-Form');
+const btnSubmit = document.querySelector('#btn-submit');
+const loginBtn = document.querySelector('#login-btn');
 
-// console.log(form)
+console.log('new logic add attribute input to  button')
+
+/** Need add to style in the future */
+if (btnSubmit) {
+    btnSubmit.style.textAlign = 'center';
+    btnSubmit.setAttribute('type', 'button')
+}
 
 function checkPassword(input) {
     if ( password.value.length > 0 ) {
@@ -69,17 +77,39 @@ const validateForm = () => {
 };
 
 form.addEventListener("submit",  (e) => {
-    // console.log('submit')
+    console.log('form submit')
     e.preventDefault();
     e.stopPropagation();
 
     if(validateForm()) {
-        // console.log('ok')
         sendData();
-    } else {
-        // console.log('ne ok')
     }
 })
+
+if (btnSubmit) {
+    btnSubmit.addEventListener('click', (e) => {
+        console.log('click')
+        e.preventDefault();
+        e.stopPropagation();
+
+        if(validateForm()) {
+            sendData();
+        }
+    })
+}
+
+
+if (loginBtn) {
+    loginBtn.addEventListener('click', (e) => {
+        console.log('click')
+        e.preventDefault();
+        e.stopPropagation();
+
+        if(validateForm()) {
+            sendData();
+        }
+    })
+}
 
 function sendData() {
     errorMes.style.display = "none";
@@ -90,27 +120,34 @@ function sendData() {
         email: email.value
     };
 
-    console.log(formDataObj)
+    if (btn) {
+        btn.setAttribute('disabled', 'true')
+        setTimeout(() => {
+            btn.setAttribute('disabled', 'false')
+        }, 4000)
+    }
 
     const sendObject = JSON.stringify(formDataObj)
-    console.log(sendObject)
     XHR.onload = () => {
-        console.log(XHR)
         if (XHR.readyState === 4) {
             if (XHR.status === 200 || XHR.status === 201) {
                 var myobj = JSON.parse(XHR.response)
-                console.log(myobj)
                 if(myobj.token) {
                     setTimeout(()=> {
-// window.open(`http://localhost:3201/pages/dashboard?is_login=${myobj.token}&current_page=/pages/dashboard`, '_self');
-// window.
-                        window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/dashboard`
+                        let force_login_param_to_new_app = ''
+                        let force_login_param_to_local = ''
+                        let loginParams = (new URL(document.location)).searchParams;
+                        force_login_param_to_new_app = loginParams.get("force_login_param_to_new_app");
+                        force_login_param_to_local = loginParams.get("force_login_param_to_local");
+                        if (force_login_param_to_new_app) {
+                            window.location.href = `https://new.app.convolo.ai/security/login?is_login=${myobj.token}`
+                        } else if (force_login_param_to_local) {
+                            window.location.href = `http://localhost:3201/security/login?is_login=${myobj.token}`
+                        } else {
+                            window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}`
+                        }
                     }, 500)
-
-                } else {
-                    // window.location.href = `https://new.app.convolo.ai/pages/pbx/self-onboarding?is_login=${myobj.token}`
                 }
-                // http://localhost:4201/security/login?is_login=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDYwMDQ5MDgsImljYklkIjo3MDUxOSwidmVyIjoidjEiLCJpYXQiOjE3MDU0MDAxMDh9.-3-hIQivnmBTgYAgBe-qvzdcM5uvWw8SQ9MEGPsKdJw&current_page=/pages/dashboard
             } else {
                 errorMes.style.display = "flex";
                 if (XHR.response) {
@@ -119,11 +156,8 @@ function sendData() {
                         errorTextMes.textContent = responseJson.message
                         console.error(errorTextMes);
                     }
-                } else {
-                    // console.log('no errorTextMes')
                 }
             }
-            // console.log('no XHR.response')
         }
     };
 

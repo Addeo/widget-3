@@ -44,6 +44,7 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
                 inputPhone.intlTelInput({
                     utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@21.0.8/build/js/utils.js",
                     strictMode: true,
+                    autoPlaceholder: 'aggressive',
                     initialCountry: countryCode.toLowerCase()
                 });
 
