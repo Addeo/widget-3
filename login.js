@@ -156,6 +156,7 @@ function sendData() {
                         errorTextMes.textContent = responseJson.message
                         console.error(errorTextMes);
                     }
+                    btn.setAttribute('disabled', 'false')
                 }
             }
         }
