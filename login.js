@@ -6,6 +6,8 @@ const form = document.querySelector('#wf-form-Signin-Form');
 const btnSubmit = document.querySelector('#btn-submit');
 const loginBtn = document.querySelector('#login-btn');
 let errorTextMesLogin = document.querySelector("#text-error-message");
+let errorHeadTextMesLogin = document.querySelector("#login-error-message-head");
+
 
 console.log('new logic add attribute input to  button')
 
@@ -156,10 +158,13 @@ function sendData() {
                     btn.removeAttribute('disabled')
                     if (errorTextMesLogin) {
                         if (responseJson.message === 'no user') {
+                            errorHeadTextMesLogin.textContent = 'Login Error!'
                             errorTextMesLogin.textContent = 'User with this email not found'
                         } else if (responseJson.message === 'wrong user') {
+                            errorHeadTextMesLogin.textContent = 'Login Error!'
                             errorTextMesLogin.textContent = 'The username or password you entered is incorrect. Please try again or use the "Forgot Password?" link to reset it.'
                         } else {
+                            errorHeadTextMesLogin.textContent = 'Oh snap!'
                             errorTextMesLogin.textContent = 'Something went wrong while submitting the form'
                         }
                     }
