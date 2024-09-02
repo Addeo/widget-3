@@ -153,11 +153,17 @@ function sendData() {
                 errorMes.style.display = "flex";
                 if (XHR.response) {
                     const responseJson = JSON.parse(XHR.response)
-                    if (errorTextMesLogin) {
-                        errorTextMesLogin.textContent = responseJson.message
-                        console.error(errorTextMesLogin);
-                    }
                     btn.setAttribute('disabled', 'false')
+                    if (errorTextMesLogin) {
+                        if (responseJson.message === 'no user') {
+                            errorTextMesLogin.textContent = 'User with this email not found'
+                            // The username or password you entered is incorrect. Please try again or use the "Forgot Password?" link to reset it.
+                        } else {
+                            errorTextMesLogin.textContent = responseJson.message
+                        }
+
+                        // console.error(errorTextMesLogin);
+                    }
                 }
             }
         }
