@@ -5,6 +5,7 @@ const errorMes = document.querySelector(".error-mes");
 const form = document.querySelector('#wf-form-Signin-Form');
 const btnSubmit = document.querySelector('#btn-submit');
 const loginBtn = document.querySelector('#login-btn');
+const errorTextMesLogin = document.querySelector("#text-error-message");
 
 console.log('new logic add attribute input to  button')
 
@@ -152,9 +153,9 @@ function sendData() {
                 errorMes.style.display = "flex";
                 if (XHR.response) {
                     const responseJson = JSON.parse(XHR.response)
-                    if (errorTextMes) {
-                        errorTextMes.textContent = responseJson.message
-                        console.error(errorTextMes);
+                    if (errorTextMesLogin) {
+                        errorTextMesLogin.textContent = responseJson.message
+                        console.error(errorTextMesLogin);
                     }
                     btn.setAttribute('disabled', 'false')
                 }
