@@ -153,7 +153,7 @@ function sendData() {
                 errorMes.style.display = "flex";
                 if (XHR.response) {
                     const responseJson = JSON.parse(XHR.response)
-                    btn.setAttribute('disabled', 'false')
+                    btn.removeAttribute('disabled')
                     if (errorTextMesLogin) {
                         if (responseJson.message === 'no user') {
                             errorTextMesLogin.textContent = 'User with this email not found'
