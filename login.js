@@ -126,7 +126,8 @@ function sendData() {
     if (btn) {
         btn.setAttribute('disabled', 'true')
         setTimeout(() => {
-            btn.setAttribute('disabled', 'false')
+            // btn.setAttribute('disabled', 'false')
+            btn.removeAttribute('disabled')
         }, 4000)
     }
 
