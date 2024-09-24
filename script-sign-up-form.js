@@ -17,7 +17,7 @@ let force_self_onboarding_ai_register
 let partner
 let params2 = (new URL(document.location)).searchParams;
 
-console.log('24/09')
+console.log('25/09')
 force_self_onboarding_ai_register = params2.get("force_self_onboarding_ai_register");
 partner = params2.get("partner");
 // console.log('$FPROM fix!!!')
@@ -325,7 +325,7 @@ function sendData(token) {
         // console.log('force_self_onboarding_ai_register')
         registerUrl = 'https://api.leads.convolo.ai/api/v2/auth/register-ai-onboarding'
         formDataObj['initParams'] = ['SHARED_OUTBOUND', 'DNC_PROJECT']
-        formDataObj['partner'] = partner
+        formDataObj['promo_code'] = partner
     }
 
     const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
