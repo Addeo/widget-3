@@ -325,6 +325,7 @@ function sendData(token) {
         // console.log('force_self_onboarding_ai_register')
         registerUrl = 'https://api.leads.convolo.ai/api/v2/auth/register-ai-onboarding'
         formDataObj['initParams'] = ['SHARED_OUTBOUND', 'DNC_PROJECT']
+        formDataObj['partner'] = partner
     }
 
     const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
