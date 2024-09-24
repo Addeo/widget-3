@@ -388,9 +388,9 @@ function sendData(token) {
                     if (errorTextMes) {
                         errorTextMes.textContent = responseJson.message
                         if (responseJson.message === 'wrong promo code') {
-                            setTimeout(() => {
-                                window.location = "https://brightcall.ai/success";
-                            }, 2000)
+                            // setTimeout(() => {
+                            //     window.location = "https://brightcall.ai/success";
+                            // }, 2000)
                         }
                     } else {
                         // console.log('no errorTextMes')
