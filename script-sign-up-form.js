@@ -13,10 +13,13 @@ const errorMes = document.querySelector(".error-mes");
 const errorTextMes = document.querySelector("#text-error-message");
 
 let force_self_onboarding_ai_register
+
+let partner
 let params2 = (new URL(document.location)).searchParams;
 
-console.log('19/09')
+console.log('24/09')
 force_self_onboarding_ai_register = params2.get("force_self_onboarding_ai_register");
+partner = params2.get("partner");
 // console.log('$FPROM fix!!!')
 // console.log('params', params2)
 // console.log('force_self_onboarding_ai_register', force_self_onboarding_ai_register)
@@ -256,6 +259,10 @@ function sendData(token) {
 
     if (force_self_onboarding_ai_register) {
         formDataObj.agree_to_terms = true
+
+        if (partner) {
+            formDataObj.promo_code = partner
+        }
     }
 
     FD.delete("terms")
