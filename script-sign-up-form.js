@@ -17,7 +17,7 @@ let force_self_onboarding_ai_register
 let partner
 let params2 = (new URL(document.location)).searchParams;
 
-console.log('25/09!')
+console.log('26/09!')
 force_self_onboarding_ai_register = params2.get("force_self_onboarding_ai_register");
 partner = params2.get("partner");
 console.log('partner', partner)
@@ -260,10 +260,7 @@ function sendData(token) {
 
     if (force_self_onboarding_ai_register) {
         formDataObj.agree_to_terms = true
-
-        if (partner) {
-            formDataObj.promo_code = partner
-        }
+        formDataObj.promo_code = partner ?? ''
     }
 
     FD.delete("terms")
@@ -326,7 +323,7 @@ function sendData(token) {
         // console.log('force_self_onboarding_ai_register')
         registerUrl = 'https://api.leads.convolo.ai/api/v2/auth/register-ai-onboarding'
         formDataObj['initParams'] = ['SHARED_OUTBOUND', 'DNC_PROJECT']
-        formDataObj['promo_code'] = partner
+        formDataObj['promo_code'] = partner ?? ''
     }
 
     const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
