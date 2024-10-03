@@ -17,7 +17,7 @@ let force_self_onboarding_ai_register
 let partner
 let params2 = (new URL(document.location)).searchParams;
 
-console.log('26/09!')
+console.log('03/10')
 force_self_onboarding_ai_register = params2.get("force_self_onboarding_ai_register");
 partner = params2.get("partner");
 console.log('partner', partner)
@@ -356,7 +356,18 @@ function sendData(token) {
                 if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
                     var myobj = JSON.parse(XHR.response)
                     if(myobj.token) {
-                        window.location.href = `https://app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                        if (partner)  {
+                        //     logic of partner auth
+                            if (partner === 'rick@sellbigger.com') {
+                                window.location.href = `https://app.sellbigger.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                            } else if (partner.includes('routezilla')) {
+                                window.location.href = `https://calls.routezilla.com/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                            } else {
+                                window.location.href = `https://app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                            }
+                        } else {
+                            window.location.href = `https://app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                        }
                         // window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
                     } else {
                         window.location.href = 'https://brightcall.ai/success';
