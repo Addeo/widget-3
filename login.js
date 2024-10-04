@@ -79,19 +79,19 @@ const validateForm = () => {
     return validateResult.every(v => v === true)
 };
 
-form.addEventListener("submit",  (e) => {
-    console.log('form submit')
-    e.preventDefault();
-    e.stopPropagation();
-
-    if(validateForm()) {
-        sendData();
-    }
-})
+// form.addEventListener("submit",  (e) => {
+//     console.log('form submit')
+//     e.preventDefault();
+//     e.stopPropagation();
+//
+//     if(validateForm()) {
+//         sendData();
+//     }
+// })
 
 if (btnSubmit) {
     btnSubmit.addEventListener('click', (e) => {
-        console.log('click')
+        console.log('click btnSubmit')
         e.preventDefault();
         e.stopPropagation();
 
@@ -104,7 +104,7 @@ if (btnSubmit) {
 
 if (loginBtn) {
     loginBtn.addEventListener('click', (e) => {
-        console.log('click')
+        console.log('click loginBtn')
         e.preventDefault();
         e.stopPropagation();
 
