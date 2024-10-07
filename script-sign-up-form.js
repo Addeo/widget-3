@@ -358,7 +358,7 @@ function sendData(token) {
                     if(myobj.token) {
                         if (partner)  {
                         //     logic of partner auth
-                            if (partner === 'rick@sellbigger.com') {
+                            if (partner.includes('sellbigger')) {
                                 window.location.href = `https://app.sellbigger.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
                             } else if (partner.includes('routezilla')) {
                                 window.location.href = `https://calls.routezilla.com/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
