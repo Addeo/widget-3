@@ -17,7 +17,7 @@ let force_self_onboarding_ai_register
 let partner
 let params2 = (new URL(document.location)).searchParams;
 
-console.log('03/10')
+console.log('10/10')
 force_self_onboarding_ai_register = params2.get("force_self_onboarding_ai_register");
 partner = params2.get("partner");
 console.log('partner', partner)
