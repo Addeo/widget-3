@@ -12,13 +12,13 @@ const agree = document.querySelector("#terms");
 const errorMes = document.querySelector(".error-mes");
 const errorTextMes = document.querySelector("#text-error-message");
 
-let force_self_onboarding_ai_register
+const force_self_onboarding_ai_register = true
 
 let partner
 let params2 = (new URL(document.location)).searchParams;
 
 console.log('10/10')
-force_self_onboarding_ai_register = params2.get("force_self_onboarding_ai_register");
+// force_self_onboarding_ai_register = params2.get("force_self_onboarding_ai_register");
 partner = params2.get("partner");
 console.log('partner', partner)
 // console.log('$FPROM fix!!!')
