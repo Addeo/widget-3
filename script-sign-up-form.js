@@ -17,10 +17,10 @@ const force_self_onboarding_ai_register = true
 let partner
 let params2 = (new URL(document.location)).searchParams;
 
-console.log('10/10')
+// console.log('10/10')
 // force_self_onboarding_ai_register = params2.get("force_self_onboarding_ai_register");
 partner = params2.get("partner");
-console.log('partner', partner)
+// console.log('partner', partner)
 // console.log('$FPROM fix!!!')
 // console.log('params', params2)
 // console.log('force_self_onboarding_ai_register', force_self_onboarding_ai_register)
