@@ -425,3 +425,5 @@ function sendData(token) {
     XHR.setRequestHeader("Access-Control-Allow-Origin", "*");
     XHR.send(sendObject);
 }
+
+console.log('skip query param')
