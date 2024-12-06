@@ -13,6 +13,7 @@ const errorMes = document.querySelector(".error-mes");
 const errorTextMes = document.querySelector("#text-error-message");
 
 const force_self_onboarding_ai_register = true
+let beta = false
 
 let partner
 let params2 = (new URL(document.location)).searchParams;
@@ -20,6 +21,9 @@ let params2 = (new URL(document.location)).searchParams;
 // console.log('10/10')
 // force_self_onboarding_ai_register = params2.get("force_self_onboarding_ai_register");
 partner = params2.get("partner");
+beta = params2.get("beta");
+
+console.log('beta', beta)
 // console.log('partner', partner)
 // console.log('$FPROM fix!!!')
 // console.log('params', params2)
@@ -386,7 +390,11 @@ function sendData(token) {
                                 window.location.href = `https://app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
                             }
                         } else {
-                            window.location.href = `https://app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                            if (beta) {
+                                window.location.href = `https://beta.app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                            } else {
+                                window.location.href = `https://app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                            }
                         }
                         // window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
                     } else {
