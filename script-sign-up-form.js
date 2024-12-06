@@ -367,7 +367,7 @@ function sendData(token) {
                     window.dataLayer.push({event: sendEvent});
                 }
 
-                if (window.$FPROM) {
+                if (window.$FPROM && window.$FPRROM.trackSignup) {
                     window.$FPRROM.trackSignup(
                         { email: formDataObj.email},
                         // function(){console.log('Callback received!')}
