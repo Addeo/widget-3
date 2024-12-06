@@ -315,7 +315,7 @@ function sendData(token) {
     if (buttonRegister) {
         buttonRegister.setAttribute('disabled', 'true')
         setTimeout(() => {
-            btn.removeAttribute('disabled')
+            if (buttonRegister) buttonRegister.removeAttribute('disabled')
         }, 4000)
     }
 
