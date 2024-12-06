@@ -363,9 +363,19 @@ function sendData(token) {
                     window.dataLayer.push({event: sendEvent});
                 }
 
+                if (window.$FPROM) {
+                    window.$FPRROM.trackSignup(
+                        { email: formDataObj.email},
+                        // function(){console.log('Callback received!')}
+                    );
+                } else {
+                    // console.log('no $FPROM')
+                }
+
                 if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
                     var myobj = JSON.parse(XHR.response)
-                    if(myobj.token) {
+                    console.log('myobj', myobj)
+                    if (myobj.token) {
                         if (partner)  {
                         //     logic of partner auth
                             if (partner.includes('sellbigger')) {
@@ -380,20 +390,13 @@ function sendData(token) {
                         }
                         // window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
                     } else {
+                        console.log('no token')
                         window.location.href = 'https://brightcall.ai/success';
                         // window.location.href = `https://new.app.convolo.ai/pages/pbx/self-onboarding?is_login=${myobj.token}`
                     }
                 } else {
+                    console.log('not ai')
                     window.location.href = 'https://brightcall.ai/success';
-                }
-
-                if (window.$FPROM) {
-                    window.$FPRROM.trackSignup(
-                        { email: formDataObj.email},
-                        // function(){console.log('Callback received!')}
-                    );
-                } else {
-                    // console.log('no $FPROM')
                 }
 
             } else {
@@ -425,5 +428,3 @@ function sendData(token) {
     XHR.setRequestHeader("Access-Control-Allow-Origin", "*");
     XHR.send(sendObject);
 }
-
-console.log('skip query param')
