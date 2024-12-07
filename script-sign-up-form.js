@@ -397,6 +397,7 @@ function sendData(token) {
                     var myobj = JSON.parse(XHR.response)
                     if (myobj.token) {
                         if (partner)  {
+                            console.log('partner')
                         //     logic of partner auth
                             if (partner.includes('sellbigger')) {
                                 window.location.href = `https://app.sellbigger.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
@@ -406,9 +407,12 @@ function sendData(token) {
                                 window.location.href = `https://app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
                             }
                         } else {
+                            console.log('no partner')
                             if (beta) {
+                                console.log('beta')
                                 window.location.href = `https://beta.app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
                             } else {
+                                console.log('not beta')
                                 window.location.href = `https://app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
                             }
                         }
