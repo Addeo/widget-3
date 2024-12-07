@@ -26,8 +26,6 @@ beta = params2.get("beta");
 test = params2.get("test");
 loadingSendSingUp = false
 
-console.log('beta 5', beta)
-console.log('test', test)
 // console.log('partner', partner)
 // console.log('$FPROM fix!!!')
 // console.log('params', params2)
@@ -210,11 +208,9 @@ const validateForm = () => {
 };
 
 form.addEventListener("submit", function(e) {
-    console.log('submit')
     e.preventDefault();
     e.stopPropagation();
     if (loadingSendSingUp) {
-        console.log('loading')
         return
     }
     loadingSendSingUp = true
@@ -234,7 +230,6 @@ form.addEventListener("submit", function(e) {
 });
 
 form.addEventListener("click", function(e) {
-    console.log('click')
     const mainInterest = document.getElementById("mainInterest");
     if (mainInterest.value == 'Main Interest' || mainInterest.value == '' || !mainInterest.value) {
         const spanElements = document.getElementsByClassName("current");
@@ -368,7 +363,6 @@ function sendData(token) {
 
             setTimeout(() => {
                 if (buttonRegister) {
-                    console.log('unset disabled')
                     buttonRegister.removeAttribute('disabled')
                 }
                 loadingSendSingUp = false;
@@ -397,7 +391,7 @@ function sendData(token) {
                     window.dataLayer.push({event: sendEvent});
                 }
 
-                if (window.$FPROM ) {
+                if (window.$FPROM !== undefined) {
                     if (window.$FPRROM.trackSignup) {
                         window.$FPRROM.trackSignup(
                             { email: formDataObj.email},
@@ -408,7 +402,6 @@ function sendData(token) {
 
                 if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
                     var myobj = JSON.parse(XHR.response)
-                    console.log('myobj', myobj)
                     if (myobj.token) {
                         if (partner)  {
                         //     logic of partner auth
