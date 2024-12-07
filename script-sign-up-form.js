@@ -15,6 +15,8 @@ const errorTextMes = document.querySelector("#text-error-message");
 const force_self_onboarding_ai_register = true
 let beta = false
 let test = false
+let tokenRed = ''
+let loadingSendSingUp = false
 
 let partner
 let params2 = (new URL(document.location)).searchParams;
@@ -24,9 +26,14 @@ let params2 = (new URL(document.location)).searchParams;
 partner = params2.get("partner");
 beta = params2.get("beta");
 test = params2.get("test");
-loadingSendSingUp = false
 
-console.log('update 07')
+let tokenRed = params2.get("tokenRed");
+
+console.log('update 08')
+
+if (tokenRed) {
+    window.location.href = `https://beta.app.brightcall.ai/security/login?is_login=${tokenRed}&current_page=/pages/pbx/self-onboarding-ai`
+}
 
 // console.log('partner', partner)
 // console.log('$FPROM fix!!!')
