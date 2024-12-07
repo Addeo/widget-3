@@ -14,6 +14,7 @@ const errorTextMes = document.querySelector("#text-error-message");
 
 const force_self_onboarding_ai_register = true
 let beta = false
+let test = false
 
 let partner
 let params2 = (new URL(document.location)).searchParams;
@@ -21,9 +22,11 @@ let params2 = (new URL(document.location)).searchParams;
 // console.log('10/10')
 // force_self_onboarding_ai_register = params2.get("force_self_onboarding_ai_register");
 partner = params2.get("partner");
-beta = params2.get("beta 2");
+beta = params2.get("beta");
+test = params2.get("test");
 
-console.log('beta', beta)
+console.log('beta 2', beta)
+console.log('test', test)
 // console.log('partner', partner)
 // console.log('$FPROM fix!!!')
 // console.log('params', params2)
@@ -319,10 +322,16 @@ function sendData(token) {
         }, 4000)
     }
 
+
     let registerUrl = 'https://api.leads.convolo.ai/api/v2/auth/register'
     // console.log('formDataObj', formDataObj)
     // console.log('mainInterest', formDataObj['mainInterest'])
     // console.log('()', (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent'))
+
+    if (test) {
+        registerUrl = 'https://api.leads.convolo.ai/api/v1/test3'
+    }
+
     if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
         // console.log('force_self_onboarding_ai_register')
         registerUrl = 'https://api.leads.convolo.ai/api/v2/auth/register-ai-onboarding'
@@ -404,7 +413,9 @@ function sendData(token) {
                     }
                 } else {
                     console.log('not ai')
-                    window.location.href = 'https://brightcall.ai/success';
+                    if (!test)  {
+                        window.location.href = 'https://brightcall.ai/success';
+                    }
                 }
 
             } else {
