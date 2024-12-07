@@ -25,7 +25,7 @@ partner = params2.get("partner");
 beta = params2.get("beta");
 test = params2.get("test");
 
-console.log('beta 2', beta)
+console.log('beta 3', beta)
 console.log('test', test)
 // console.log('partner', partner)
 // console.log('$FPROM fix!!!')
