@@ -26,6 +26,8 @@ beta = params2.get("beta");
 test = params2.get("test");
 loadingSendSingUp = false
 
+console.log('update 07')
+
 // console.log('partner', partner)
 // console.log('$FPROM fix!!!')
 // console.log('params', params2)
