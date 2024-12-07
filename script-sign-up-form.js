@@ -40,7 +40,7 @@ if (agree) {
                 errorMes.style.display = "none";
             }
         } else {
-            showError(agree, `Please agree to the Convolo Terms of Service`)
+            showError(agree, `Please agree to the Brightcall Terms of Service`)
         }
     })
 }
@@ -209,8 +209,14 @@ const validateForm = () => {
 };
 
 form.addEventListener("submit", function(e) {
+    console.log('submit')
     e.preventDefault();
     e.stopPropagation();
+    const buttonRegister = document.querySelector('#register-get-started-button')
+    if (buttonRegister.getAttribute('disabled')) {
+        console.log('disabled')
+        return
+    }
     if (validateForm()) {
         if (grecaptcha) {
             grecaptcha.ready(function() {
@@ -227,6 +233,7 @@ form.addEventListener("submit", function(e) {
 });
 
 form.addEventListener("click", function(e) {
+    console.log('click')
     const mainInterest = document.getElementById("mainInterest");
     if (mainInterest.value == 'Main Interest' || mainInterest.value == '' || !mainInterest.value) {
         const spanElements = document.getElementsByClassName("current");
