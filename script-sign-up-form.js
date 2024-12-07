@@ -27,7 +27,7 @@ partner = params2.get("partner");
 beta = params2.get("beta");
 test = params2.get("test");
 
-let tokenRed = params2.get("tokenRed");
+tokenRed = params2.get("tokenRed");
 
 console.log('update 08')
 
