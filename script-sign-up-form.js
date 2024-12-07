@@ -316,9 +316,13 @@ function sendData(token) {
 
     const buttonRegister = document.querySelector('#register-get-started-button')
     if (buttonRegister) {
+        console.log('set disabled')
         buttonRegister.setAttribute('disabled', 'true')
         setTimeout(() => {
-            if (buttonRegister) buttonRegister.removeAttribute('disabled')
+            if (buttonRegister) {
+                console.log('unset disabled')
+                buttonRegister.removeAttribute('disabled')
+            }
         }, 4000)
     }
 
@@ -353,6 +357,14 @@ function sendData(token) {
 
     XHR.onload = () => {
         if (XHR.readyState === 4) {
+
+            setTimeout(() => {
+                if (buttonRegister) {
+                    console.log('unset disabled')
+                    buttonRegister.removeAttribute('disabled')
+                }
+            }, 2000)
+
             if (XHR.status === 200 || XHR.status === 201) {
                 // Google analytics
                 if (window.dataLayer) {
@@ -376,13 +388,13 @@ function sendData(token) {
                     window.dataLayer.push({event: sendEvent});
                 }
 
-                if (window.$FPROM && window.$FPRROM.trackSignup) {
-                    window.$FPRROM.trackSignup(
-                        { email: formDataObj.email},
-                        // function(){console.log('Callback received!')}
-                    );
-                } else {
-                    // console.log('no $FPROM')
+                if (window.$FPROM ) {
+                    if (window.$FPRROM.trackSignup) {
+                        window.$FPRROM.trackSignup(
+                            { email: formDataObj.email},
+                            // function(){console.log('Callback received!')}
+                        );
+                    }
                 }
 
                 if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
@@ -419,9 +431,7 @@ function sendData(token) {
                 }
 
             } else {
-                setTimeout(() => {
-                    if (buttonRegister) buttonRegister.removeAttribute('disabled')
-                }, 1000)
+
                 errorMes.style.display = "flex";
                 if (XHR.response) {
                     const responseJson = JSON.parse(XHR.response)
