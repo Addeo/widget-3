@@ -210,12 +210,12 @@ const validateForm = () => {
 };
 
 form.addEventListener("submit", function(e) {
+    console.log('submit')
     e.preventDefault();
     e.stopPropagation();
     if (loadingSendSingUp) {
         return
     }
-    loadingSendSingUp = true
     if (validateForm()) {
         if (grecaptcha) {
             grecaptcha.ready(function() {
@@ -226,6 +226,7 @@ form.addEventListener("submit", function(e) {
         } else {
             sendData()
         }
+        loadingSendSingUp = true
     } else {
         console.log('error')
     }
