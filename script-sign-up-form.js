@@ -24,8 +24,9 @@ let params2 = (new URL(document.location)).searchParams;
 partner = params2.get("partner");
 beta = params2.get("beta");
 test = params2.get("test");
+loadingSendSingUp = false
 
-console.log('beta 4', beta)
+console.log('beta 5', beta)
 console.log('test', test)
 // console.log('partner', partner)
 // console.log('$FPROM fix!!!')
@@ -212,11 +213,11 @@ form.addEventListener("submit", function(e) {
     console.log('submit')
     e.preventDefault();
     e.stopPropagation();
-    const buttonRegister = document.querySelector('#register-get-started-button')
-    if (buttonRegister.getAttribute('disabled')) {
-        console.log('disabled')
+    if (loadingSendSingUp) {
+        console.log('loading')
         return
     }
+    loadingSendSingUp = true
     if (validateForm()) {
         if (grecaptcha) {
             grecaptcha.ready(function() {
@@ -370,6 +371,7 @@ function sendData(token) {
                     console.log('unset disabled')
                     buttonRegister.removeAttribute('disabled')
                 }
+                loadingSendSingUp = false;
             }, 2000)
 
             if (XHR.status === 200 || XHR.status === 201) {
