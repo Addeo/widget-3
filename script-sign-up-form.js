@@ -391,15 +391,6 @@ function sendData(token) {
                     window.dataLayer.push({event: sendEvent});
                 }
 
-                if (window.$FPROM !== undefined) {
-                    if (window.$FPRROM.trackSignup) {
-                        window.$FPRROM.trackSignup(
-                            { email: formDataObj.email},
-                            // function(){console.log('Callback received!')}
-                        );
-                    }
-                }
-
                 if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
                     var myobj = JSON.parse(XHR.response)
                     if (myobj.token) {
@@ -450,6 +441,15 @@ function sendData(token) {
                 } else {
                     // console.log('no XHR.response')
                 }
+            }
+
+            if (window.$FPROM !== undefined) {
+                // if (window.$FPRROM.trackSignup) {
+                //     window.$FPRROM.trackSignup(
+                //         { email: formDataObj.email},
+                //         // function(){console.log('Callback received!')}
+                //     );
+                // }
             }
         }
     };
