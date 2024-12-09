@@ -29,7 +29,7 @@ test = params2.get("test");
 
 tokenRed = params2.get("tokenRed");
 
-console.log('update 08')
+console.log('update 09.01')
 
 if (tokenRed) {
     window.location.href = `https://beta.app.brightcall.ai/security/login?is_login=${tokenRed}&current_page=/pages/pbx/self-onboarding-ai`
@@ -345,10 +345,6 @@ function sendData(token) {
     // console.log('mainInterest', formDataObj['mainInterest'])
     // console.log('()', (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent'))
 
-    if (test) {
-        registerUrl = 'https://api.leads.convolo.ai/api/v1/test3'
-    }
-
     if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
         // console.log('force_self_onboarding_ai_register')
         registerUrl = 'https://api.leads.convolo.ai/api/v2/auth/register-ai-onboarding'
@@ -404,24 +400,43 @@ function sendData(token) {
                 if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
                     var myobj = JSON.parse(XHR.response)
                     if (myobj.token) {
-                        if (partner)  {
-                            console.log('partner')
-                        //     logic of partner auth
-                            if (partner.includes('sellbigger')) {
-                                window.location.href = `https://app.sellbigger.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
-                            } else if (partner.includes('routezilla')) {
-                                window.location.href = `https://calls.routezilla.com/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
-                            } else {
-                                window.location.href = `https://app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                        if (test) {
+                            const calendar = document.getElementById('getstarted-calendar')
+                            const signupContainer = document.getElementsByClassName('signup-container')
+                            if (signupContainer[0] && calendar) {
+                                signupContainer[0].style.display = "none"
+                                calendar.style.display = "block"
+                                const calendarCabinetButton = document.getElementById('calendar-cabinet')
+                                calendarCabinetButton.addEventListener('click', () => {
+                                    if (beta) {
+                                        console.log('beta')
+                                        window.location.href = `https://beta.app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                                    } else {
+                                        console.log('not beta')
+                                        window.location.href = `https://app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                                    }
+                                })
                             }
                         } else {
-                            console.log('no partner')
-                            if (beta) {
-                                console.log('beta')
-                                window.location.href = `https://beta.app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                            if (partner)  {
+                                console.log('partner')
+                                //     logic of partner auth
+                                if (partner.includes('sellbigger')) {
+                                    window.location.href = `https://app.sellbigger.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                                } else if (partner.includes('routezilla')) {
+                                    window.location.href = `https://calls.routezilla.com/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                                } else {
+                                    window.location.href = `https://app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                                }
                             } else {
-                                console.log('not beta')
-                                window.location.href = `https://app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                                console.log('no partner')
+                                if (beta) {
+                                    console.log('beta')
+                                    window.location.href = `https://beta.app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                                } else {
+                                    console.log('not beta')
+                                    window.location.href = `https://app.brightcall.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
+                                }
                             }
                         }
                         // window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
@@ -432,9 +447,7 @@ function sendData(token) {
                     }
                 } else {
                     console.log('not ai')
-                    if (!test)  {
-                        window.location.href = 'https://brightcall.ai/success';
-                    }
+                    window.location.href = 'https://brightcall.ai/success';
                 }
 
             } else {
