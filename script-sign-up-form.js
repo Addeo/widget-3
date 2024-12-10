@@ -400,6 +400,7 @@ function sendData(token) {
                 if (force_self_onboarding_ai_register && (formDataObj['mainInterest'] && formDataObj['mainInterest'] === 'AI Agent')) {
                     var myobj = JSON.parse(XHR.response)
                     if (myobj.token) {
+                        console.log('timeout')
                         setTimeout(() => {
                             if (test) {
                                 const calendar = document.getElementById('getstarted-calendar')
@@ -441,7 +442,7 @@ function sendData(token) {
                                 }
                             }
                             // window.location.href = `https://app.convolo.ai/security/login?is_login=${myobj.token}&current_page=/pages/pbx/self-onboarding-ai`
-                        }, 600)
+                        }, 1000)
                     } else {
                         console.log('no token')
                         window.location.href = 'https://brightcall.ai/success';
