@@ -408,6 +408,8 @@ function sendData(token) {
                                     signupContainer[0].style.display = "none"
                                     calendar.style.display = "block"
                                     const calendarCabinetButton = document.getElementById('calendar-cabinet')
+                                    calendarCabinetButton.style.bottom = "20px"
+
                                     calendarCabinetButton.addEventListener('click', () => {
                                         if (partner)  {
                                             console.log('partner')
