@@ -29,7 +29,7 @@ test = params2.get("test");
 
 tokenRed = params2.get("tokenRed");
 
-console.log('update 11.01')
+console.log('update 12.01')
 
 if (tokenRed) {
     window.location.href = `https://beta.app.brightcall.ai/security/login?is_login=${tokenRed}&current_page=/pages/pbx/self-onboarding-ai`
