@@ -168,7 +168,6 @@ const getFieldName = (input) => {
     return firstLetter + input.id.slice(1);
 };
 
-
 const checkLength = (input, min, max) => {
     if (input.value.length < min || input.value.length > max) {
         showError(
@@ -282,7 +281,7 @@ function sendData(token) {
     if (force_self_onboarding_ai_register) {
         formDataObj.agree_to_terms = true
         formDataObj.promo_code = partner ?? ''
-        console.log('partner set')
+        console.log('partner set', partner)
     }
     console.log('formDataObj', formDataObj)
     FD.delete("terms")
