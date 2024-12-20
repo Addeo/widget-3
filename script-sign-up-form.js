@@ -14,7 +14,7 @@ const errorTextMes = document.querySelector("#text-error-message");
 
 const force_self_onboarding_ai_register = true
 let beta = false
-let test = true
+let test = false
 let tokenRed = ''
 let loadingSendSingUp = false
 
@@ -29,7 +29,7 @@ test = params2.get("test");
 
 tokenRed = params2.get("tokenRed");
 
-console.log('update 12.01')
+console.log('update 20.12')
 
 if (tokenRed) {
     window.location.href = `https://beta.app.brightcall.ai/security/login?is_login=${tokenRed}&current_page=/pages/pbx/self-onboarding-ai`
@@ -278,11 +278,13 @@ function sendData(token) {
         formDataObj['country_code'] = window.selectedCountryCode;
     }
 
+    console.log('partner test')
     if (force_self_onboarding_ai_register) {
         formDataObj.agree_to_terms = true
         formDataObj.promo_code = partner ?? ''
+        console.log('partner set')
     }
-
+    console.log('formDataObj', formDataObj)
     FD.delete("terms")
     FD.forEach((value, key) => (formDataObj[key] = value));
 
@@ -329,11 +331,9 @@ function sendData(token) {
 
     const buttonRegister = document.querySelector('#register-get-started-button')
     if (buttonRegister) {
-        console.log('set disabled')
         buttonRegister.setAttribute('disabled', 'true')
         setTimeout(() => {
             if (buttonRegister) {
-                console.log('unset disabled')
                 buttonRegister.removeAttribute('disabled')
             }
         }, 4000)
@@ -363,6 +363,10 @@ function sendData(token) {
     }
 
     const sendObject = `${JSON.stringify(formDataObj).substr(0, JSON.stringify(formDataObj).length - 1)}` + `, "terms": ${agree.checked} }`
+
+    if (test) {
+        return
+    }
 
     XHR.onload = () => {
         if (XHR.readyState === 4) {
