@@ -29,7 +29,7 @@ test = params2.get("test");
 
 tokenRed = params2.get("tokenRed");
 
-console.log('update 20.12 - 2')
+console.log('update 20.12 - 3')
 
 if (tokenRed) {
     window.location.href = `https://beta.app.brightcall.ai/security/login?is_login=${tokenRed}&current_page=/pages/pbx/self-onboarding-ai`
@@ -279,9 +279,12 @@ function sendData(token) {
 
     console.log('partner test')
     if (force_self_onboarding_ai_register) {
+        console.log('formDataObj before', formDataObj)
         formDataObj.agree_to_terms = true
         formDataObj.promo_code = partner ?? ''
         console.log('partner set', partner)
+        console.log('formDataObj', formDataObj)
+        formDataObj['promo_code'] = partner ?? ''
     }
     console.log('formDataObj', formDataObj)
     FD.delete("terms")
