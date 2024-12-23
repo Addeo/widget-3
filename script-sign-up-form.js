@@ -408,13 +408,11 @@ function sendData(token) {
                                 const calendar = document.getElementById('getstarted-calendar')
                                 const calendarHeader = document.getElementById('getstarted-header-content')
                                 const calendarContent = document.getElementById('getstarted-content')
-                                const calendarContents = document.getElementsByClassName('getstarted-content')
                                 const signupContainer = document.getElementsByClassName('signup-container')
                                 if (signupContainer[0] && calendar) {
                                     signupContainer[0].style.display = "none"
                                     if (calendarHeader) calendarHeader.style.display = "block"
                                     if (calendarContent) calendarContent.style.display = "block"
-                                    if (calendarContents[0]) calendarContents[0].style.display = "block"
                                     calendar.style.display = "block"
                                     // const calendarCabinetButton = document.getElementById('calendar-cabinet')
                                     // calendarCabinetButton.style.bottom = "20px"
