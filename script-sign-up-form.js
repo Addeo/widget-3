@@ -29,7 +29,7 @@ test = params2.get("test");
 
 tokenRed = params2.get("tokenRed");
 
-console.log('update 20.12 - 6')
+console.log('update 20.23 - 1')
 
 if (tokenRed) {
     window.location.href = `https://beta.app.brightcall.ai/security/login?is_login=${tokenRed}&current_page=/pages/pbx/self-onboarding-ai`
@@ -406,12 +406,18 @@ function sendData(token) {
                         console.log('timeout')
                         setTimeout(() => {
                                 const calendar = document.getElementById('getstarted-calendar')
+                                const calendarHeader = document.getElementById('getstarted-header-content')
+                                const calendarContent = document.getElementById('getstarted-content')
+                                const calendarContents = document.getElementsByClassName('getstarted-content')
                                 const signupContainer = document.getElementsByClassName('signup-container')
                                 if (signupContainer[0] && calendar) {
                                     signupContainer[0].style.display = "none"
+                                    if (calendarHeader) calendarHeader.style.display = "block"
+                                    if (calendarContent) calendarContent.style.display = "block"
+                                    if (calendarContents[0]) calendarContents[0].style.display = "block"
                                     calendar.style.display = "block"
-                                    const calendarCabinetButton = document.getElementById('calendar-cabinet')
-                                    calendarCabinetButton.style.bottom = "20px"
+                                    // const calendarCabinetButton = document.getElementById('calendar-cabinet')
+                                    // calendarCabinetButton.style.bottom = "20px"
 
                                     calendarCabinetButton.addEventListener('click', () => {
                                         if (partner)  {
