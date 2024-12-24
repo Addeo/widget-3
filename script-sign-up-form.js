@@ -412,7 +412,7 @@ function sendData(token) {
                                 if (signupContainer[0] && calendar) {
                                     signupContainer[0].style.display = "none"
                                     if (calendarHeader) calendarHeader.style.display = "block"
-                                    if (calendarContent) calendarContent.style.display = "block"
+                                    if (calendarContent) calendarContent.style.display = "flex"
                                     calendar.style.display = "block"
                                     const calendarCabinetButton = document.getElementById('calendar-cabinet')
                                     // calendarCabinetButton.style.bottom = "20px"
