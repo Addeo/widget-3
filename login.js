@@ -1,5 +1,6 @@
 const email = document.querySelector("#email-2");
 const password = document.querySelector("#password");
+const code_2fa = document.querySelector("#code_2fa");
 const btn = document.querySelector("#btn-submit");
 const errorMes = document.querySelector(".error-mes");
 const form = document.querySelector('#wf-form-Signin-Form');
@@ -26,6 +27,7 @@ function checkPassword(input) {
         return false
     }
 }
+
 function checkEmail(input) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (re.test(input.value.trim())) {
@@ -114,13 +116,19 @@ if (loginBtn) {
     })
 }
 
+function show2fa() {
+    console.log('show2fa');
+    if (code_2fa) code_2fa.style.display = 'block';
+}
+
 function sendData() {
     errorMes.style.display = "none";
     const XHR = new XMLHttpRequest();
 
     const formDataObj = {
         password: password.value,
-        email: email.value
+        email: email.value,
+        code_2fa: code_2fa.value
     };
 
     if (btn) {
@@ -135,7 +143,13 @@ function sendData() {
     XHR.onload = () => {
         if (XHR.readyState === 4) {
             if (XHR.status === 200 || XHR.status === 201) {
+
                 var myobj = JSON.parse(XHR.response)
+
+                if (myobj.success && myobj.required_2fa && !formDataObj.code_2fa) {
+                    show2fa()
+                }
+
                 if(myobj.token) {
                     setTimeout(()=> {
                         let force_login_param_to_new_app = ''
