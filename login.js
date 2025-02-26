@@ -128,7 +128,7 @@ function sendData() {
     const formDataObj = {
         password: password.value,
         email: email.value,
-        code_2fa: code_2fa.value
+        code_2fa: code_2fa?.value
     };
 
     if (btn) {
