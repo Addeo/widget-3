@@ -1,6 +1,7 @@
 const email = document.querySelector("#email-2");
 const password = document.querySelector("#password");
-const code_2fa = document.querySelector("#code_2fa");
+const code_2fa = document.querySelector("#field");
+const code_2fa_container = document.querySelector(".input_outter-wrapper-2fa");
 const btn = document.querySelector("#btn-submit");
 const errorMes = document.querySelector(".error-mes");
 const form = document.querySelector('#wf-form-Signin-Form');
@@ -119,6 +120,7 @@ if (loginBtn) {
 function show2fa() {
     console.log('show2fa');
     if (code_2fa) code_2fa.style.display = 'block';
+    if (code_2fa_container) code_2fa_container.style.display = 'block';
 }
 
 function sendData() {
