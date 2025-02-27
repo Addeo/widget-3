@@ -172,6 +172,7 @@ function sendData() {
                 errorMes.style.display = "flex";
                 if (XHR.response) {
                     const responseJson = JSON.parse(XHR.response)
+                    console.log(responseJson)
                     btn.removeAttribute('disabled')
                     if (errorTextMesLogin) {
                         if (responseJson.message === 'no user') {
