@@ -172,7 +172,6 @@ function sendData() {
                 errorMes.style.display = "flex";
                 if (XHR.response) {
                     const responseJson = JSON.parse(XHR.response)
-                    console.log(responseJson)
                     btn.removeAttribute('disabled')
                     if (errorTextMesLogin) {
                         if (responseJson.message === 'no user') {
@@ -183,7 +182,7 @@ function sendData() {
                             errorTextMesLogin.textContent = 'The username or password you entered is incorrect. Please try again or use the "Forgot Password?" link to reset it.'
                         } else {
                             errorHeadTextMesLogin.textContent = 'Oh snap!'
-                            errorTextMesLogin.textContent = 'Something went wrong while submitting the form'
+                            errorTextMesLogin.textContent = responseJson.message ?? 'Something went wrong while submitting the form'
                         }
                     }
                 }
