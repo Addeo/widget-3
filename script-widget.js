@@ -191,8 +191,8 @@ function getCookie(name) {
 }
 
 var myCookie = getCookie("gtm_internal_user");
-var params3 = (new URL(document.location)).searchParams;
-var internalUser = params3.get("internal_user");
+var params4 = (new URL(document.location)).searchParams;
+var internalUser = params4.get("internal_user");
 
 if (myCookie && internalUser && internalUser == 'true') {
 } else {
