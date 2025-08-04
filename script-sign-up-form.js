@@ -350,6 +350,9 @@ function sendData(token) {
         formDataObj['initParams'] = ['SHARED_OUTBOUND', 'DNC_PROJECT']
         formDataObj['promo_code'] = partner ?? ''
 
+        formDataObj['pageName'] = document.title;
+        formDataObj['pageUrl'] = window.location.href;
+
         if (partner) {
             if (partner.includes('sellbigger')) {
                 formDataObj['whiteLabelCompany'] = 'sellbigger'
