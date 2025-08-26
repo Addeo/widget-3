@@ -414,9 +414,22 @@ function sendData(token) {
                                 const signupContainer = document.getElementsByClassName('signup-container')
                                 if (signupContainer[0] && calendar) {
                                     signupContainer[0].style.display = "none"
+
+                                    const zoho2 = ['AE', 'BH', 'EG', 'IR', 'IQ', 'IL', 'JO', 'KW', 'LB', 'OM', 'QA', 'SA', 'SY', 'TR', 'YE', 'DZ', 'EH', 'LY', 'MA', 'SD', 'TN', 'SS', 'IN', 'PK', 'BD', 'AO', 'SH', 'BJ', 'BW', 'BF', 'BI', 'CM', 'CV', 'CF', 'TD', 'KM', 'CG', 'CD', 'DJ', 'GQ', 'ER', 'SZ', 'ET', 'GA', 'GM', 'GH', 'GN', 'GW', 'CI', 'KE', 'LS', 'LR', 'MG', 'MW', 'ML', 'MR', 'MU', 'YT', 'MZ', 'NA', 'NE', 'NG', 'ST', 'RE', 'RW', 'ST', 'SN', 'SC', 'SL', 'SO', 'ZA', 'TZ', 'TG', 'UG', 'ZM', 'ZW'];
+                                    
+                                    if (window.county) {
+                                        if (zoho2.includes(window.county)) {
+                                           console.log('zoho2!!!')
+                                        } else {
+                                            calendar.style.display = "block"
+                                        }
+                                    }
+
                                     if (calendarHeader) calendarHeader.style.display = "block"
                                     if (calendarContent) calendarContent.style.display = "flex"
-                                    calendar.style.display = "block"
+                                   
+
+
                                     const calendarCabinetButton = document.getElementById('calendar-cabinet')
                                     // calendarCabinetButton.style.bottom = "20px"
 
