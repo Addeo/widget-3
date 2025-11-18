@@ -21,7 +21,9 @@ const form_field_country_code = document.getElementById('country_code');
 
 function addDataAttrToButtons() {
     const buttonDp = document.getElementById('button-getstarted-open-dp');
+    console.log('buttonDp', buttonDp)
     const buttonMb = document.getElementById('button-getstarted-open-mb');
+    console.log('buttonMb', buttonMb)
 
     if (buttonDp) {
         buttonDp.setAttribute('data-attr', 'button-getsarted-send-2');
