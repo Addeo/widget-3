@@ -19,6 +19,22 @@ window.internationalNumber = '';
 
 const form_field_country_code = document.getElementById('country_code');
 
+function addDataAttrToButtons() {
+    const buttonDp = document.getElementById('button-getstarted-open-dp');
+    const buttonMb = document.getElementById('button-getstarted-open-mb');
+
+    if (buttonDp) {
+        buttonDp.setAttribute('data-attr', 'button-getsarted-send-2');
+    }
+
+    if (buttonMb) {
+        buttonMb.setAttribute('data-attr', 'button-getsarted-send-2');
+    }
+}
+
+// Call the function to add data attributes
+addDataAttrToButtons();
+
 fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
     .then(function (response) {
         response.json().then(responseParse => {
