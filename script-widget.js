@@ -20,18 +20,22 @@ window.internationalNumber = '';
 const form_field_country_code = document.getElementById('country_code');
 
 function addDataAttrToButtons() {
-    const buttonDp = document.getElementById('button-getstarted-open-dp');
-    console.log('buttonDp', buttonDp)
-    const buttonMb = document.getElementById('button-getstarted-open-mb');
-    console.log('buttonMb', buttonMb)
+    // Handle multiple elements with same id using querySelectorAll
+    const buttonsDp = document.querySelectorAll('[id="button-getstarted-open-dp"]');
+    const buttonsMb = document.querySelectorAll('[id="button-getstarted-open-mb"]');
 
-    if (buttonDp) {
-        buttonDp.setAttribute('data-attr', 'button-getsarted-send-2');
-    }
+    console.log('Found buttonsDp:', buttonsDp.length);
+    console.log('Found buttonsMb:', buttonsMb.length);
 
-    if (buttonMb) {
-        buttonMb.setAttribute('data-attr', 'button-getsarted-send-2');
-    }
+    // Add data attribute to all elements with id "button-getstarted-open-dp"
+    buttonsDp.forEach(button => {
+        button.setAttribute('data-attr', 'button-getsarted-send-2');
+    });
+
+    // Add data attribute to all elements with id "button-getstarted-open-mb"
+    buttonsMb.forEach(button => {
+        button.setAttribute('data-attr', 'button-getsarted-send-2');
+    });
 }
 
 // Call the function to add data attributes
