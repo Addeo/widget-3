@@ -29,12 +29,12 @@ function addDataAttrToButtons() {
 
     // Add data attribute to all elements with id "button-getstarted-open-dp"
     buttonsDp.forEach(button => {
-        button.setAttribute('data-attr', 'button-getsarted-send-2');
+        button.setAttribute('data-attr', 'button-getstarted-open-dp');
     });
 
     // Add data attribute to all elements with id "button-getstarted-open-mb"
     buttonsMb.forEach(button => {
-        button.setAttribute('data-attr', 'button-getsarted-send-2');
+        button.setAttribute('data-attr', 'button-getstarted-open-mb');
     });
 }
 
