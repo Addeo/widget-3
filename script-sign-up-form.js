@@ -32,7 +32,7 @@ tokenRed = params2.get("tokenRed");
 console.log('update 20.23 - 3')
 
 function addDataAttrToButton() {
-    const button = document.getElementById('register-get-started-button');
+    const button = document.getElementById('button-getstarted-send-rg');
     if (button) {
         button.setAttribute('data-attr', 'button-getsarted-send-2');
     }
