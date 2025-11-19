@@ -34,7 +34,7 @@ console.log('update 20.23 - 3')
 function addDataAttrToButton() {
     const button = document.getElementById('button-getstarted-send-rg');
     if (button) {
-        button.setAttribute('data-attr', 'button-getsarted-send-2');
+        button.setAttribute('data-attr', 'button-getstarted-send-rg');
     }
 }
 
