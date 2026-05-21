@@ -99,8 +99,13 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
 
             // WIDGET OPEN LOGIC
             if (uaeWidgetsCountryArray.includes(countryCode.toUpperCase())) {
-                // console.log('new widget for SA')
                 if (countryCode.toUpperCase() === 'SA') {
+                    console.log('[brightcall widget] Loading widget', {
+                        variant: 'SA / Middle East (convolo)',
+                        countryCode: countryCode.toUpperCase(),
+                        widget_key: 'fcd285e2a0637636f63075cbd6207849',
+                        scriptHost: 'app.convolo.ai',
+                    });
                     (function f() {
                         var widget_key = 'fcd285e2a0637636f63075cbd6207849';
                         window.leadCM = {widget_key: widget_key,};
@@ -112,6 +117,12 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
                         s.parentNode.insertBefore(em, s);
                     })();
                 } else {
+                    console.log('[brightcall widget] Loading widget', {
+                        variant: 'Middle East / UAE region (convolo)',
+                        countryCode: countryCode.toUpperCase(),
+                        widget_key: '2484172bec46f0d949814f774e384e09',
+                        scriptHost: 'app.convolo.ai',
+                    });
                     (function f() {
                         var widget_key = '2484172bec46f0d949814f774e384e09';
                         window.leadCM = {widget_key: widget_key,};
@@ -124,6 +135,12 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
                     })();
                 }
             } else {
+                console.log('[brightcall widget] Loading widget', {
+                    variant: 'default (leadconnect)',
+                    countryCode: countryCode.toUpperCase(),
+                    widget_key: defaultWidgetKey,
+                    scriptHost: 'app.leadconnect.cc',
+                });
                 (function f() {
                     var widget_key = defaultWidgetKey;
                     window.leadCM = {widget_key: widget_key,};
@@ -179,6 +196,12 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
     })
     // WIDGET OPEN LOGIC
     .catch(function (error) {
+        console.log('[brightcall widget] Loading widget (IP check failed, fallback)', {
+            variant: 'default fallback (leadconnect)',
+            error: error,
+            widget_key: defaultWidgetKey,
+            scriptHost: 'app.leadconnect.cc',
+        });
         (function f() {
             var widget_key = defaultWidgetKey;
             window.leadCM = {widget_key: widget_key,};
