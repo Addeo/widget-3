@@ -69,7 +69,7 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
             inputPhone2.intlTelInput({
                 utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@21.0.8/build/js/utils.js" ,
                 strictMode: true,
-                initialCountry: responseParse.ip.country.toLowerCase()});
+                initialCountry: countryCode.toLowerCase()});
             inputPhone2.on("input", function () {
                 inputPhone2.intlTelInput("setNumber", inputPhone2.val())
                 window.isValidNumber = inputPhone2.intlTelInput("isValidNumber")
@@ -85,26 +85,22 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
         }
 
         // WIDGET OPEN LOGIC
-        if (uaeWidgetsCountryArray.includes(countryCode)) {
-            (function f() { var widget_key = uaeWidgetKeyLeadsPage; window.leadCM = { widget_key: widget_key, }; var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true; em.src = 'https://app.convolo.ai/js/icallback.js?v=' + Math.random() + '&key=' + widget_key + '&uri=' + encodeURIComponent(window.location.href); var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s); })();
-        } else {
-            (function f() { var widget_key = defaultWidgetKey; window.leadCM = { widget_key: widget_key, }; var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true; em.src = 'https://app.leadconnect.cc/js/icallback.js?v=' + Math.random() + '&key=' + widget_key + '&uri=' + encodeURIComponent(window.location.href); var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s); })();
-        }
-        if (scandinaviaWidgetsCountryArray.includes(countryCode)) {
+        loadGeoWidget(countryCode);
+        if (scandinaviaWidgetsCountryArray.includes(countryCode.toUpperCase())) {
             if (elemScandinavia) {
                 elemScandinavia.style.display = 'flex'
             }
             if (elemScandinaviaLogo) {
                 elemScandinaviaLogo.style.display = 'flex'
             }
-        } else if (euWidgetsCountryArray.includes(countryCode)) {
+        } else if (euWidgetsCountryArray.includes(countryCode.toUpperCase())) {
             if (elemEu) {
                 elemEu.style.display = 'flex'
             }
             if (elemEuLogo) {
                 elemEuLogo.style.display = 'flex'
             }
-        } else if (uaeWidgetsCountryArray.includes(countryCode)) {
+        } else if (uaeWidgetsCountryArray.includes(countryCode.toUpperCase())) {
             if (elemUae) {
                 elemUae.style.display = 'flex'
             }
@@ -126,5 +122,5 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
 })
     // WIDGET OPEN LOGIC
     .catch(function(error) {
-        (function f() { var widget_key = defaultWidgetKey; window.leadCM = { widget_key: widget_key, }; var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true; em.src = 'https://app.leadconnect.cc/js/icallback.js?v=' + Math.random() + '&key=' + widget_key + '&uri=' + encodeURIComponent(window.location.href); var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s); })();
+        loadGeoWidget('', { fallback: true, error: error });
 });

@@ -98,60 +98,7 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
             }
 
             // WIDGET OPEN LOGIC
-            if (uaeWidgetsCountryArray.includes(countryCode.toUpperCase())) {
-                if (countryCode.toUpperCase() === 'SA') {
-                    console.log('[brightcall widget] Loading widget', {
-                        variant: 'SA / Middle East (convolo)',
-                        countryCode: countryCode.toUpperCase(),
-                        widget_key: 'fcd285e2a0637636f63075cbd6207849',
-                        scriptHost: 'app.convolo.ai',
-                    });
-                    (function f() {
-                        var widget_key = 'fcd285e2a0637636f63075cbd6207849';
-                        window.leadCM = {widget_key: widget_key,};
-                        var em = document.createElement('script');
-                        em.type = 'text/javascript';
-                        em.async = true;
-                        em.src = 'https://app.convolo.ai/js/icallback.js?v=' + Math.random() + '&key=' + widget_key + '&uri=' + encodeURIComponent(window.location.href);
-                        var s = document.getElementsByTagName('script')[0];
-                        s.parentNode.insertBefore(em, s);
-                    })();
-                } else {
-                    console.log('[brightcall widget] Loading widget', {
-                        variant: 'Middle East / UAE region (convolo)',
-                        countryCode: countryCode.toUpperCase(),
-                        widget_key: '2484172bec46f0d949814f774e384e09',
-                        scriptHost: 'app.convolo.ai',
-                    });
-                    (function f() {
-                        var widget_key = '2484172bec46f0d949814f774e384e09';
-                        window.leadCM = {widget_key: widget_key,};
-                        var em = document.createElement('script');
-                        em.type = 'text/javascript';
-                        em.async = true;
-                        em.src = 'https://app.convolo.ai/js/icallback.js?v=' + Math.random() + '&key=' + widget_key + '&uri=' + encodeURIComponent(window.location.href);
-                        var s = document.getElementsByTagName('script')[0];
-                        s.parentNode.insertBefore(em, s);
-                    })();
-                }
-            } else {
-                console.log('[brightcall widget] Loading widget', {
-                    variant: 'default (leadconnect)',
-                    countryCode: countryCode.toUpperCase(),
-                    widget_key: defaultWidgetKey,
-                    scriptHost: 'app.leadconnect.cc',
-                });
-                (function f() {
-                    var widget_key = defaultWidgetKey;
-                    window.leadCM = {widget_key: widget_key,};
-                    var em = document.createElement('script');
-                    em.type = 'text/javascript';
-                    em.async = true;
-                    em.src = 'https://app.leadconnect.cc/js/icallback.js?v=' + Math.random() + '&key=' + widget_key + '&uri=' + encodeURIComponent(window.location.href);
-                    var s = document.getElementsByTagName('script')[0];
-                    s.parentNode.insertBefore(em, s);
-                })();
-            }
+            loadGeoWidget(countryCode);
             if (scandinaviaWidgetsCountryArray.includes(countryCode.toUpperCase())) {
                 if (elemScandinavia) {
                     elemScandinavia.style.display = 'flex'
@@ -196,22 +143,7 @@ fetch('https://api.leads.convolo.ai/api/v1/support/check-ip/my')
     })
     // WIDGET OPEN LOGIC
     .catch(function (error) {
-        console.log('[brightcall widget] Loading widget (IP check failed, fallback)', {
-            variant: 'default fallback (leadconnect)',
-            error: error,
-            widget_key: defaultWidgetKey,
-            scriptHost: 'app.leadconnect.cc',
-        });
-        (function f() {
-            var widget_key = defaultWidgetKey;
-            window.leadCM = {widget_key: widget_key,};
-            var em = document.createElement('script');
-            em.type = 'text/javascript';
-            em.async = true;
-            em.src = 'https://app.leadconnect.cc/js/icallback.js?v=' + Math.random() + '&key=' + widget_key + '&uri=' + encodeURIComponent(window.location.href);
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(em, s);
-        })();
+        loadGeoWidget('', { fallback: true, error: error });
     });
 
 
